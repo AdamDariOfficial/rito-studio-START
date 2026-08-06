@@ -481,3 +481,52 @@ produzione.
 
 Fino al completamento di questi gate RITO Studio START resta un candidato di
 freeze, non una baseline congelata.
+
+## Shared UX sync approvato — 7 agosto 2026
+
+```text
+START_BUSINESS_SHARED_UX_SYNC_IMPLEMENTED
+START_BUSINESS_SHARED_UX_SYNC_AUTOMATED_VALIDATION_PASSED
+START_BUSINESS_SHARED_UX_SYNC_MANUAL_REVIEW_APPROVED_BY_USER
+START_BUSINESS_SHARED_UX_SYNC_COMMIT_PENDING
+START_BUSINESS_SHARED_UX_SYNC_PUSH_PENDING
+PR_PENDING
+MERGE_PENDING
+DEPLOY_NOT_PERFORMED
+```
+
+Baseline:
+
+```text
+main/origin-main:
+439efff0f14315310b9149cde0283633696a0eb0
+
+working branch:
+fix/rito-start-business-shared-ux-sync
+
+controlled package:
+RITO_START_BUSINESS_SHARED_UX_SYNC_CCP v1.0.0
+```
+
+Scope applicativo approvato:
+
+- gallery mobile con contenimento verticale esplicito;
+- pointer cursor sugli elementi cliccabili;
+- hover lift minimo sulle CTA primarie;
+- titoli editoriali abbreviati;
+- FAQ one-page con copy, reveal e accordion motion allineati al BUSINESS approvato.
+
+Evidenza automatica registrata:
+
+```text
+bun install --frozen-lockfile -> exit 0
+bun run lint                 -> exit 0, sei warning Fast Refresh ereditati
+bun run build                -> exit 0, client + SSR + Nitro
+git diff --check             -> exit 0
+dependency drift             -> none
+staged                       -> 0 durante la validazione
+```
+
+L'utente ha approvato manualmente la resa complessiva dopo la validazione.
+La pubblicazione della branch è stata autorizzata separatamente; PR, merge e deploy
+restano gate successivi.

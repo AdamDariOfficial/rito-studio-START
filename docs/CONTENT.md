@@ -671,3 +671,53 @@ statica con reduced motion e non intercetta touch, mouse o tastiera.
 
 Privacy e Cookie usano la navbar condivisa e non mostrano skip link. La home conserva
 “Vai ai trattamenti” come primo collegamento da tastiera.
+
+## Override START approvato — Shared UX sync del 7 agosto 2026
+
+Questa sezione sostituisce, per lo stato corrente dello START, gli esempi incompatibili
+nelle sezioni precedenti senza trasformare il prodotto in BUSINESS.
+
+### Titoli editoriali correnti
+
+```text
+Trattamenti: Quattro aree di cura.
+Metodo: Prima viene l’ascolto.
+Studio: Uno spazio per il gesto.
+CTA finale: Il tuo tempo di cura.
+```
+
+### FAQ one-page
+
+La home START include una sezione FAQ tra `GalleryRail` e `BookingCTA`.
+Non viene introdotta una route `/faq`.
+
+Le sei FAQ correnti sono identiche al BUSINESS approvato:
+
+1. **Come scelgo il trattamento giusto?**
+   Raccontaci l'esigenza principale. Ti aiuteremo a scegliere durante la consulenza iniziale.
+
+2. **Quanto prima devo arrivare?**
+   Cinque minuti sono sufficienti, salvo indicazioni diverse ricevute dallo studio.
+
+3. **Posso modificare o annullare l'appuntamento?**
+   Sì, chiamando lo studio e rispettando le condizioni concordate al momento della prenotazione.
+
+4. **I prezzi sono definitivi?**
+   I prezzi “da” indicano una base. Eventuali variazioni devono essere chiarite prima del trattamento.
+
+5. **Come devo prepararmi?**
+   Ogni scheda trattamento contiene le indicazioni essenziali. In caso di dubbi, contatta lo studio.
+
+6. **Posso regalare un trattamento?**
+   Chiama lo studio per sapere se sono disponibili gift card o voucher.
+
+L'accordion usa lo stesso comportamento approvato del BUSINESS: reveal per item con stagger,
+rotazione del simbolo `+`, animazione open/close e rispetto di `prefers-reduced-motion`.
+
+### Interazioni condivise
+
+- il rail gallery mobile mantiene lo scroll X nativo e contiene esplicitamente l'overflow Y;
+- la pill gallery START resta invariata;
+- link, pulsanti abilitati e `summary` usano il cursore pointer;
+- le CTA primarie usano un lift hover minimo e non essenziale;
+- reduced motion rimuove i transform non necessari.

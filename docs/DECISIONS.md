@@ -260,3 +260,29 @@ e verifica del tag annotato e una nuova autorizzazione esplicita per BUSINESS.
 **Limite:** la presenza del contratto non autorizza la creazione della
 repository BUSINESS, l'implementazione multipagina, backend, database,
 autenticazione, booking nativo, deploy o consumo di crediti.
+
+## BW-DEC-035 — Shared UX sync START dopo il confronto BUSINESS
+
+**Decisione:** riportare nello START esclusivamente i refinement tecnici e editoriali
+confermati nel BUSINESS che migliorano il prodotto senza cambiarne l'architettura one-page.
+
+Sono approvati:
+
+- contenimento `overflow-y-hidden` del rail gallery mobile, preservando scroll X nativo e pill;
+- cursore pointer sugli elementi cliccabili abilitati;
+- lift hover minimo sulle CTA primarie, disattivabile con reduced motion;
+- titoli editoriali abbreviati:
+  - `Quattro aree di cura.`;
+  - `Prima viene l’ascolto.`;
+  - `Uno spazio per il gesto.`;
+  - `Il tuo tempo di cura.`;
+- sezione FAQ direttamente nella home START, con le sei FAQ, animazioni e comportamento
+  dell'accordion identici al BUSINESS approvato.
+
+**Vincolo:** START resta one-page. Non vengono introdotti `/faq`, lightbox gallery,
+gesture di redirect a fine rail, treatment dialog, filtri catalogo o altre feature
+multipagina BUSINESS.
+
+**Evidenza:** `RITO_START_BUSINESS_SHARED_UX_SYNC_CCP v1.0.0` applicato e validato
+il 7 agosto 2026; frozen install, lint, build e `git diff --check` hanno terminato
+con exit code 0. L'utente ha successivamente approvato la resa manuale complessiva.

@@ -19,7 +19,7 @@ export function RitualFeature() {
               data-reveal
               style={{ ["--reveal-delay" as string]: "80ms" }}
             >
-              Un trattamento non dovrebbe iniziare <span className="italic">dalla fretta.</span>
+              Prima viene <span className="italic">l’ascolto.</span>
             </h2>
             <p
               className="mt-6 max-w-lg text-base leading-relaxed text-muted md:text-lg"

@@ -92,6 +92,64 @@
     letter-spacing: -0.01em;
     color: var(--ink);
   }
+
+  a[href],
+  button:not(:disabled),
+  summary {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+@layer components {
+  .action-primary {
+    transition:
+      color var(--motion-duration-fast) var(--motion-ease-ui),
+      background-color var(--motion-duration-fast) var(--motion-ease-ui),
+      border-color var(--motion-duration-fast) var(--motion-ease-ui),
+      transform var(--motion-duration-fast) var(--motion-ease-ui);
+  }
+
+  .action-primary:hover {
+    transform: translateY(-1px);
+  }
+
+  .action-primary:active {
+    transform: translateY(0);
+  }
+}
+
+@keyframes rito-accordion-open {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes rito-accordion-close {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+.faq-accordion-content[data-state="open"] {
+  animation: rito-accordion-open var(--motion-duration-ui) var(--motion-ease-ui);
+}
+
+.faq-accordion-content[data-state="closed"] {
+  animation: rito-accordion-close var(--motion-duration-ui) var(--motion-ease-ui);
 }
 
 @utility eyebrow {
@@ -171,6 +229,11 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .action-primary:hover,
+  .action-primary:active {
+    transform: none !important;
   }
 }
 
