@@ -19,9 +19,7 @@ export function StudioEditorial() {
               data-reveal
               style={{ ["--reveal-delay" as string]: "80ms" }}
             >
-              Un ambiente quieto,
-              <br />
-              costruito <span className="italic">intorno al gesto.</span>
+              Uno spazio per <span className="italic">il gesto.</span>
             </h2>
             <p
               className="mt-6 max-w-md text-base leading-relaxed text-muted md:text-lg"

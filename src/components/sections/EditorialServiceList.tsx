@@ -19,9 +19,7 @@ export function EditorialServiceList() {
               data-reveal
               style={{ ["--reveal-delay" as string]: "80ms" }}
             >
-              Rituali essenziali,
-              <br />
-              <span className="italic">pensati per te.</span>
+              Quattro aree di <span className="italic text-accent">cura.</span>
             </h2>
           </div>
           <div className="md:col-span-6 md:col-start-7">

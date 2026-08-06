@@ -43,13 +43,13 @@ export function GalleryRail() {
         <p id={scrollDescriptionId} className="sr-only">
           Su schermi piccoli, scorri orizzontalmente per visualizzare tutte le immagini.
         </p>
-        <div className="relative">
+        <div className="relative min-w-0">
           <div
             ref={railRef}
             role="list"
             tabIndex={0}
             aria-describedby={scrollDescriptionId}
-            className="-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 md:mx-0 md:grid md:grid-cols-2 md:gap-5 md:overflow-visible md:px-0 lg:grid-cols-12 lg:gap-6"
+            className="-mx-5 flex min-w-0 snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain px-5 pb-2 md:mx-0 md:grid md:grid-cols-2 md:gap-5 md:overflow-visible md:px-0 lg:grid-cols-12 lg:gap-6"
           >
             {gallerySlots.map((slot, index) => {
               const offsets = ["", "md:mt-8 lg:mt-12", "", "md:mt-5 lg:mt-8"];

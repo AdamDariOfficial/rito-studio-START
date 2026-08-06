@@ -9,6 +9,7 @@ import { EditorialServiceList } from "@/components/sections/EditorialServiceList
 import { RitualFeature } from "@/components/sections/RitualFeature";
 import { StudioEditorial } from "@/components/sections/StudioEditorial";
 import { GalleryRail } from "@/components/sections/GalleryRail";
+import { FaqSection } from "@/components/sections/FaqSection";
 import { BookingCTA } from "@/components/sections/BookingCTA";
 import { PracticalInfo } from "@/components/sections/PracticalInfo";
 
@@ -53,6 +54,7 @@ function Index() {
         <RitualFeature />
         <StudioEditorial />
         <GalleryRail />
+        <FaqSection />
         <BookingCTA />
         <PracticalInfo />
       </main>

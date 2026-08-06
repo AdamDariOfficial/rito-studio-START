@@ -334,3 +334,52 @@ Nascondendo nome e logo, START e BUSINESS devono sembrare parte della stessa fam
 - Limiti:
 - Test manuali rimanenti:
 ```
+
+## Shared UX sync START — evidenza del 7 agosto 2026
+
+Package:
+
+```text
+RITO_START_BUSINESS_SHARED_UX_SYNC_CCP v1.0.0
+```
+
+Baseline:
+
+```text
+439efff0f14315310b9149cde0283633696a0eb0
+```
+
+Validazione automatica eseguita nel clone canonico:
+
+```text
+bun install --frozen-lockfile -> exit 0
+bun run lint                 -> exit 0
+bun run build                -> exit 0
+git diff --check             -> exit 0
+```
+
+Lint mantiene sei warning Fast Refresh preesistenti e zero errori.
+
+La build ha completato:
+
+- client Vite;
+- SSR Vite;
+- Nitro `cloudflare-module`.
+
+Il validator ha inoltre confermato:
+
+- 12 path applicativi esatti;
+- index vuoto;
+- `package.json` invariato;
+- `bun.lock` invariato;
+- nessun commit, push o PR durante il gate di validazione.
+
+Checklist manuale approvata successivamente dall'utente:
+
+- gallery mobile senza regressioni visive rilevate;
+- FAQ one-page approvata;
+- hover e pointer states approvati;
+- titoli abbreviati approvati;
+- resa complessiva approvata.
+
+Questa evidenza non dichiara un nuovo deploy di produzione.

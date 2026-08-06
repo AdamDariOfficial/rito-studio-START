@@ -77,7 +77,7 @@ export function Hero() {
                 href={site.contact.phoneHref}
                 data-reveal
                 style={{ ["--reveal-delay" as string]: "220ms" }}
-                className="inline-flex min-h-12 items-center justify-center border border-ink bg-ink px-6 text-sm font-medium tracking-wide text-white transition-colors hover:border-accent-strong hover:bg-accent-strong"
+                className="action-primary inline-flex min-h-12 items-center justify-center border border-ink bg-ink px-6 text-sm font-medium tracking-wide text-white transition-colors hover:border-accent-strong hover:bg-accent-strong"
               >
                 {ctaLabels.bookPrimary}
               </a>

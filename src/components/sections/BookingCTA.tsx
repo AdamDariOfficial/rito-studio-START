@@ -13,7 +13,7 @@ export function BookingCTA() {
                 className="mt-4 font-display text-[clamp(1.9rem,4.4vw,3.25rem)] leading-[1.05] text-white"
                 data-reveal
               >
-                Dedica tempo a ciò che ti fa <span className="italic">stare bene.</span>
+                Il tuo tempo <span className="italic">di cura.</span>
               </h2>
             </div>
             <div className="md:col-span-5 md:pt-8">
@@ -29,7 +29,7 @@ export function BookingCTA() {
                 href={site.contact.phoneHref}
                 data-reveal
                 style={{ ["--reveal-delay" as string]: "160ms" }}
-                className="mt-8 inline-flex min-h-12 items-center justify-center border border-white bg-white px-6 text-sm font-medium text-ink transition-colors hover:border-surface hover:bg-surface focus-visible:outline-white"
+                className="action-primary mt-8 inline-flex min-h-12 items-center justify-center border border-white bg-white px-6 text-sm font-medium text-ink transition-colors hover:border-surface hover:bg-surface focus-visible:outline-white"
               >
                 {ctaLabels.requestAppointment}
               </a>
