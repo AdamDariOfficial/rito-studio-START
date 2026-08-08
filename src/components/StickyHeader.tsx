@@ -279,7 +279,11 @@ export function StickyHeader() {
     setActive(null);
     if (open) closeDrawer();
 
-    window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    window.history.replaceState(
+      window.history.state,
+      "",
+      window.location.pathname + window.location.search,
+    );
     window.requestAnimationFrame(scrollToTop);
   }
 
@@ -298,6 +302,7 @@ export function StickyHeader() {
       <div className="container-editorial flex h-full items-center justify-between gap-6">
         <Link
           to="/"
+          resetScroll={!isHome}
           inert={open}
           onClick={handleLogoClick}
           className="font-display text-lg leading-none tracking-tight text-ink"

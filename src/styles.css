@@ -120,6 +120,58 @@
   .action-primary:active {
     transform: translateY(0);
   }
+
+  /*
+   * Premium dark CTA motion shared with the approved BUSINESS pattern.
+   * Applies to rectangular black links/buttons only.
+   */
+  :is(a, button).bg-ink:not(.rounded-full) {
+    background-color: var(--ink) !important;
+    background-image: linear-gradient(
+      108deg,
+      transparent 0%,
+      transparent 34%,
+      rgb(255 254 251 / 0.075) 48%,
+      transparent 62%,
+      transparent 100%
+    );
+    background-position: 100% 50%;
+    background-size: 245% 100%;
+    transition:
+      background-position 640ms var(--motion-ease-reveal),
+      box-shadow 360ms var(--motion-ease-ui),
+      transform 360ms var(--motion-ease-ui);
+  }
+
+  :is(a, button).bg-ink.border-ink:not(.rounded-full) {
+    border-color: var(--ink) !important;
+  }
+
+  :is(a, button).bg-ink:not(.rounded-full):focus-visible {
+    background-position: 0 50%;
+    box-shadow:
+      0 12px 28px rgb(27 26 24 / 0.16),
+      inset 0 1px 0 rgb(255 254 251 / 0.12);
+    transform: translateY(-1px);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    :is(a, button).bg-ink:not(.rounded-full):hover {
+      background-position: 0 50%;
+      box-shadow:
+        0 12px 28px rgb(27 26 24 / 0.16),
+        inset 0 1px 0 rgb(255 254 251 / 0.12);
+      transform: translateY(-1px);
+    }
+  }
+
+  :is(a, button).bg-ink:not(.rounded-full):active {
+    background-position: 22% 50%;
+    box-shadow:
+      0 5px 14px rgb(27 26 24 / 0.13),
+      inset 0 1px 0 rgb(255 254 251 / 0.1);
+    transform: translateY(0) scale(0.995);
+  }
 }
 
 @keyframes rito-accordion-open {
@@ -232,8 +284,16 @@
   }
 
   .action-primary:hover,
-  .action-primary:active {
+  .action-primary:active,
+  :is(a, button).bg-ink:not(.rounded-full),
+  :is(a, button).bg-ink:not(.rounded-full):hover,
+  :is(a, button).bg-ink:not(.rounded-full):focus-visible,
+  :is(a, button).bg-ink:not(.rounded-full):active {
     transform: none !important;
+  }
+
+  :is(a, button).bg-ink:not(.rounded-full) {
+    background-image: none;
   }
 }
 
