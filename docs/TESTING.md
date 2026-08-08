@@ -1,7 +1,7 @@
 # RITO Studio — Testing and Verification
 
 **Famiglia:** Beauty & Wellness
-**Versione:** 1.0
+**Versione:** 1.1
 **Stato:** approvato; nessun controllo ancora eseguito
 
 ## 1. Regola di evidenza
@@ -383,3 +383,51 @@ Checklist manuale approvata successivamente dall'utente:
 - resa complessiva approvata.
 
 Questa evidenza non dichiara un nuovo deploy di produzione.
+
+## Premium actions + logo navigation — evidenza dell'8 agosto 2026
+
+Candidate verificato:
+
+```text
+3cfb186c77c21218308cc3cd54e75248fafcd93a
+```
+
+Merge verificato su GitHub:
+
+```text
+PR #8
+main: 125b20f2cd758e0e43e4408e4ea96b04c9eb7874
+```
+
+Scope esatto:
+
+```text
+src/components/Footer.tsx
+src/components/StickyHeader.tsx
+src/styles.css
+```
+
+Gate automatici eseguiti nel clone canonico prima del commit e push:
+
+```text
+bun install --frozen-lockfile -> exit 0, no changes
+bun run lint                 -> exit 0, 0 errors, 6 inherited warnings
+bun run build                -> exit 0, client + SSR + Nitro
+git diff --check             -> exit 0
+```
+
+Il validator ha inoltre confermato index vuoto, nessun drift di `package.json` o
+`bun.lock` e scope esatto di tre path.
+
+Acceptance funzionale richiesta:
+
+- tutte le CTA rettangolari nere condividono lo stesso trattamento premium;
+- CTA bianche, outlined e controlli circolari non vengono coinvolti;
+- logo navbar/footer sulla home porta in cima;
+- logo navbar/footer da Privacy o Cookie torna alla home in cima;
+- la navigazione one-page agli anchor resta invariata;
+- reduced motion elimina movimento e sweep.
+
+Il comportamento è stato portato dal BUSINESS già approvato e l'utente ne ha
+autorizzato pubblicazione e merge su START. Un browser QA START separato post-merge
+non è stato registrato. Il deploy del merge non è stato verificato in questo pass.

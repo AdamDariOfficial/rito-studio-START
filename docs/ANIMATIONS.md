@@ -1,7 +1,7 @@
 # RITO Studio — Animation Language
 
 **Famiglia:** Beauty & Wellness
-**Versione:** 1.0
+**Versione:** 1.1
 **Stato:** approvato
 
 ## 1. Obiettivo
@@ -225,3 +225,36 @@ Con `prefers-reduced-motion: reduce`:
 - Reduced motion è rispettato.
 - Mobile non presenta jank evidente.
 - START e BUSINESS usano gli stessi token e pattern percepiti.
+
+## 15. Premium dark actions condivise — 8 agosto 2026
+
+START e BUSINESS adottano lo stesso trattamento per le azioni rettangolari con fondo
+inchiostro. Il controllo resta nero durante hover, focus e active; non usa il cambio
+improvviso verso borgogna.
+
+Pattern approvato:
+
+```text
+hover fine-pointer:
+- passaggio di luce interno a contrasto molto basso;
+- lift massimo: 1 px;
+- ombra morbida e contenuta;
+- durata principale dello sweep: 640 ms con motion-ease-reveal.
+
+active:
+- ritorno a quota base;
+- micro-compressione massima: scale(0.995);
+- ombra ridotta.
+
+reduced motion:
+- nessuna traslazione o compressione;
+- nessuno sweep luminoso;
+- funzionalità invariata.
+```
+
+Il pattern si applica soltanto a link e pulsanti rettangolari realmente neri. Restano
+esclusi controlli circolari, azioni bianche e azioni outlined.
+
+Questa regola prevale sul precedente esempio generico “transizione di sfondo e testo”
+per le CTA nere. Nelle informazioni pratiche i dati statici restano privi di hover
+decorativo; una vera CTA nera mantiene invece questo pattern condiviso.

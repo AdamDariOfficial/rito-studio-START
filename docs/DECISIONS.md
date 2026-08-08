@@ -2,7 +2,7 @@
 
 **Famiglia:** Beauty & Wellness
 **Versione:** 1.1
-**Stato:** decisioni approvate e aggiornate al 28 luglio 2026
+**Stato:** decisioni approvate e aggiornate all'8 agosto 2026
 
 ## BW-DEC-001 — Concept portfolio
 
@@ -286,3 +286,29 @@ multipagina BUSINESS.
 **Evidenza:** `RITO_START_BUSINESS_SHARED_UX_SYNC_CCP v1.0.0` applicato e validato
 il 7 agosto 2026; frozen install, lint, build e `git diff --check` hanno terminato
 con exit code 0. L'utente ha successivamente approvato la resa manuale complessiva.
+
+## Decisione condivisa — Premium dark actions e navigazione del logo — 8 agosto 2026
+
+**Decisione:** RITO Studio START e BUSINESS condividono due contratti UX.
+
+1. Le azioni rettangolari con fondo inchiostro mantengono il fondo nero e usano un unico
+   feedback premium: sweep luminoso molto discreto, lift massimo di 1 px, ombra contenuta
+   e micro-compressione in active. L'hover è riservato ai dispositivi `pointer: fine`;
+   `prefers-reduced-motion` elimina movimento e sweep.
+2. Il logo in navbar e footer, quando l'utente è già sulla home, porta alla cima usando
+   l'helper di scroll esistente; da una route diversa naviga a `/` con reset in cima.
+   Lo stato history esistente viene preservato e Back/Forward non vengono bypassati.
+
+**Esclusioni:** controlli circolari, azioni bianche/outlined, route, copy, dipendenze,
+gallery, catalogo trattamenti e architettura one-page START non vengono modificati.
+
+**Evidenza START:** candidate
+`3cfb186c77c21218308cc3cd54e75248fafcd93a`, PR #8, merge
+`125b20f2cd758e0e43e4408e4ea96b04c9eb7874`.
+
+**Evidenza BUSINESS:** candidate
+`5e0ba1acd51dfca0274768ed155224820e81b9d9`, PR #5, merge
+`276fd8e2d985bc7ea37442546800d14236009705`.
+
+**Limite:** questa decisione non prova un nuovo deploy di produzione e non sposta
+automaticamente alcun freeze precedentemente dichiarato.

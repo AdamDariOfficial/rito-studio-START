@@ -1,7 +1,7 @@
 # RITO Studio START — Approval and Freeze Record
 
-**Updated:** 3 August 2026
-**Status:** `FREEZE_PREPARATION / APPROVAL_PENDING`
+**Updated:** 8 August 2026
+**Status:** `POST_FREEZE_REFINEMENT_MERGED / CURRENT_MAIN_NOT_REFROZEN`
 **Repository:** `AdamDariOfficial/rito-studio-START`
 
 ## Purpose
@@ -98,3 +98,35 @@ No follow-up repository commit should be created solely to echo the frozen
 commit SHA, because that would advance `main` beyond the selected freeze target.
 
 RITO Studio BUSINESS remains unauthorized until a separate explicit command.
+
+## Riconciliazione post-freeze — 8 agosto 2026
+
+Il precedente freeze esplicito su:
+
+```text
+439efff0f14315310b9149cde0283633696a0eb0
+```
+
+resta una baseline storica immutabile e rimane il riferimento usato per la derivazione
+iniziale di RITO Studio BUSINESS.
+
+Dopo quel freeze, START ha ricevuto refinement successivi esplicitamente autorizzati.
+L'ultimo pass di premium dark actions e brand navigation è stato unito tramite PR #8:
+
+```text
+candidate: 3cfb186c77c21218308cc3cd54e75248fafcd93a
+current main: 125b20f2cd758e0e43e4408e4ea96b04c9eb7874
+```
+
+Questo avanzamento di `main` non viene interpretato come re-freeze implicito. Non è stata
+registrata una nuova decisione esplicita che congeli `125b20f...`, né una verifica di
+produzione post-merge che attesti quel commit come distribuito.
+
+```text
+historical freeze: 439efff0f14315310b9149cde0283633696a0eb0
+current main:       125b20f2cd758e0e43e4408e4ea96b04c9eb7874
+current main freeze: NOT DECLARED
+post-merge production verification: NOT RECORDED
+```
+
+La derivazione BUSINESS già avvenuta non viene riscritta retroattivamente.
