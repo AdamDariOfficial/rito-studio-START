@@ -15,7 +15,11 @@ export function Footer() {
     if (pathname !== "/") return;
 
     event.preventDefault();
-    window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    window.history.replaceState(
+      window.history.state,
+      "",
+      window.location.pathname + window.location.search,
+    );
     window.requestAnimationFrame(scrollToTop);
   }
 
@@ -25,6 +29,7 @@ export function Footer() {
         <div>
           <Link
             to="/"
+            resetScroll={pathname !== "/"}
             onClick={handleBrandClick}
             className="inline-flex font-display text-2xl text-white transition-colors hover:text-surface focus-visible:outline-white"
             aria-label={`${site.brand.name} — home`}
