@@ -1,6 +1,6 @@
 # RITO Studio START — Status
 
-**Updated:** 1 August 2026
+**Updated:** 8 August 2026
 **Project:** RITO Studio START
 **Repository:** `AdamDariOfficial/rito-studio-START`
 **Default branch:** `main`
@@ -530,3 +530,64 @@ staged                       -> 0 durante la validazione
 L'utente ha approvato manualmente la resa complessiva dopo la validazione.
 La pubblicazione della branch è stata autorizzata separatamente; PR, merge e deploy
 restano gate successivi.
+
+## Aggiornamento premium actions + logo navigation — 8 agosto 2026
+
+> Questa sezione è il riferimento corrente per questo pass e integra le sezioni
+> storiche precedenti senza riscriverne l'evidenza.
+
+```text
+PREMIUM_DARK_ACTIONS_IMPLEMENTED
+LOGO_TOP_NAVIGATION_IMPLEMENTED
+AUTOMATED_VALIDATION_PASSED
+FEATURE_COMMIT_3CFB186
+PR_8_MERGED
+CURRENT_MAIN_125B20F
+POST_MERGE_DEPLOY_NOT_REVERIFIED
+CURRENT_MAIN_NOT_REFROZEN
+```
+
+Baseline e merge:
+
+```text
+pre-pass main:
+bfd1e8dc3a649db37f71c376f62bcdcb3512caaa
+
+feature branch:
+feat/rito-start-premium-actions-logo-nav
+
+candidate:
+3cfb186c77c21218308cc3cd54e75248fafcd93a
+
+pull request:
+#8 — feat(rito-start): refine actions and brand navigation
+
+current main:
+125b20f2cd758e0e43e4408e4ea96b04c9eb7874
+```
+
+La PR #8 è stata unita l'8 agosto 2026 alle `13:01:08Z`. Il diff applicativo è limitato
+a `src/components/Footer.tsx`, `src/components/StickyHeader.tsx` e `src/styles.css`.
+
+Evidenza automatica sul candidate:
+
+```text
+bun install --frozen-lockfile -> exit 0, no changes
+bun run lint                 -> exit 0, 0 errors, 6 inherited Fast Refresh warnings
+bun run build                -> exit 0, client + SSR + Nitro cloudflare-module
+git diff --check             -> exit 0
+changed paths                -> 3 exact
+dependency drift             -> none
+```
+
+L'utente ha autorizzato il port del comportamento BUSINESS approvato, la pubblicazione
+del branch, la PR e il merge START. Non è registrato un browser QA separato eseguito
+dopo il merge `125b20f...`; non va quindi dichiarato come eseguito.
+
+Il freeze storico START su
+`439efff0f14315310b9149cde0283633696a0eb0` resta un identificatore storico immutabile
+usato per la derivazione iniziale BUSINESS. Poiché `main` è avanzato dopo quel freeze,
+il current main `125b20f...` non viene dichiarato automaticamente ri-congelato.
+
+Non è registrata una verifica di produzione che attesti il deploy del merge
+`125b20f...`.
