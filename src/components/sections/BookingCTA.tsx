@@ -2,7 +2,7 @@ import { ctaLabels, site } from "@/lib/site-config";
 
 export function BookingCTA() {
   return (
-    <section aria-labelledby="booking-cta-heading" className="py-24 md:py-32">
+    <section aria-labelledby="booking-cta-heading" className="py-16 md:py-20">
       <div className="container-editorial">
         <div className="relative border border-ink bg-ink p-8 md:p-16">
           <div className="grid gap-10 md:grid-cols-12 md:gap-8">
@@ -29,7 +29,7 @@ export function BookingCTA() {
                 href={site.contact.phoneHref}
                 data-reveal
                 style={{ ["--reveal-delay" as string]: "160ms" }}
-                className="action-primary mt-8 inline-flex min-h-12 items-center justify-center border border-white bg-white px-6 text-sm font-medium text-ink transition-colors hover:border-surface hover:bg-surface focus-visible:outline-white"
+                className="action-primary mt-8 inline-flex min-h-12 items-center justify-center border border-white bg-white px-6 text-sm font-medium text-ink hover:border-surface hover:bg-surface focus-visible:outline-white"
               >
                 {ctaLabels.requestAppointment}
               </a>

@@ -5,7 +5,7 @@ export function FaqSection() {
     <section
       id="faq"
       aria-labelledby="faq-heading"
-      className="scroll-mt-[calc(var(--header-height)+24px)] border-y border-line bg-surface py-12 md:py-16"
+      className="scroll-mt-[calc(var(--header-height)+24px)] border-t border-line bg-canvas py-20 md:py-24"
     >
       <div className="container-editorial grid gap-10 md:grid-cols-12">
         <div className="md:col-span-4">

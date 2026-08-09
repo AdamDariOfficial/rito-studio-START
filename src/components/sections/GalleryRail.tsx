@@ -36,8 +36,9 @@ export function GalleryRail() {
 
   return (
     <section
+      id="galleria"
       aria-label="Immagini dello studio"
-      className="bg-surface pb-20 pt-4 md:pb-24 md:pt-5 lg:pt-6"
+      className="scroll-mt-[calc(var(--header-height)+24px)] bg-surface pb-20 pt-4 md:pb-24 md:pt-5 lg:pt-6"
     >
       <div className="container-editorial">
         <p id={scrollDescriptionId} className="sr-only">

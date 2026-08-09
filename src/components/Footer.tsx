@@ -1,4 +1,4 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { type MouseEvent } from "react";
 import { scrollToTop } from "@/lib/scroll-to-anchor";
@@ -10,17 +10,17 @@ const footerLinkClass =
 export function Footer() {
   const year = new Date().getFullYear();
   const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const navigate = useNavigate();
 
   function handleBrandClick(event: MouseEvent<HTMLAnchorElement>) {
     if (pathname !== "/") return;
 
     event.preventDefault();
-    window.history.replaceState(
-      window.history.state,
-      "",
-      window.location.pathname + window.location.search,
-    );
-    window.requestAnimationFrame(scrollToTop);
+    void navigate({
+      to: "/",
+      replace: true,
+      resetScroll: false,
+    }).then(() => scrollToTop());
   }
 
   return (
