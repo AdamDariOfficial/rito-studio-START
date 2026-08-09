@@ -1,4 +1,5 @@
 import { useNavigate } from "@tanstack/react-router";
+import { ArrowDown } from "lucide-react";
 import { type MouseEvent } from "react";
 import { ctaLabels, site } from "@/lib/site-config";
 import { scrollToSection } from "@/lib/scroll-to-anchor";
@@ -77,7 +78,7 @@ export function Hero() {
                 href={site.contact.phoneHref}
                 data-reveal
                 style={{ ["--reveal-delay" as string]: "220ms" }}
-                className="action-primary inline-flex min-h-12 items-center justify-center border border-ink bg-ink px-6 text-sm font-medium tracking-wide text-white transition-colors hover:border-accent-strong hover:bg-accent-strong"
+                className="action-primary inline-flex min-h-12 items-center justify-center border border-ink bg-ink px-6 text-sm font-medium tracking-wide text-white hover:border-accent-strong hover:bg-accent-strong"
               >
                 {ctaLabels.bookPrimary}
               </a>
@@ -86,10 +87,10 @@ export function Hero() {
                 onClick={handleTreatmentsClick}
                 data-reveal
                 style={{ ["--reveal-delay" as string]: "300ms" }}
-                className="inline-flex min-h-11 items-center justify-center gap-2 border-b border-ink text-sm font-medium tracking-wide text-ink transition-colors hover:text-accent md:min-h-12 md:border md:px-6 md:hover:bg-ink md:hover:text-white"
+                className="editorial-link group min-h-11 justify-center px-1 text-sm font-medium tracking-wide md:min-h-12 md:px-2"
               >
                 {ctaLabels.discoverTreatments}
-                <span aria-hidden>↓</span>
+                <ArrowDown aria-hidden size={18} strokeWidth={1.7} className="rito-scroll-arrow" />
               </a>
             </div>
           </div>

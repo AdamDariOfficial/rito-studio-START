@@ -58,6 +58,8 @@ export const nav = [
   { label: "Trattamenti", hash: "#trattamenti" },
   { label: "Metodo", hash: "#metodo" },
   { label: "Studio", hash: "#studio" },
+  { label: "Galleria", hash: "#galleria" },
+  { label: "FAQ", hash: "#faq" },
   { label: "Contatti", hash: "#contatti" },
 ] as const;
 

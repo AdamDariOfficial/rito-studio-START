@@ -81,7 +81,7 @@ export function PracticalInfo() {
                     data-js-only
                     type="button"
                     onClick={() => setMapActive(true)}
-                    className="action-primary mt-7 inline-flex min-h-12 w-full max-w-xs items-center justify-center border border-ink bg-ink px-5 text-sm font-medium text-white transition-colors hover:border-accent-strong hover:bg-accent-strong sm:w-auto"
+                    className="action-primary mt-7 inline-flex min-h-12 w-full max-w-xs items-center justify-center border border-ink bg-ink px-5 text-sm font-medium text-white hover:border-accent-strong hover:bg-accent-strong sm:w-auto"
                   >
                     Attiva la mappa interattiva
                   </button>

@@ -279,12 +279,11 @@ export function StickyHeader() {
     setActive(null);
     if (open) closeDrawer();
 
-    window.history.replaceState(
-      window.history.state,
-      "",
-      window.location.pathname + window.location.search,
-    );
-    window.requestAnimationFrame(scrollToTop);
+    void navigate({
+      to: "/",
+      replace: true,
+      resetScroll: false,
+    }).then(() => scrollToTop());
   }
 
   return (
@@ -314,7 +313,7 @@ export function StickyHeader() {
         <nav
           inert={open}
           aria-label="Navigazione principale"
-          className="hidden items-center gap-8 lg:flex"
+          className="hidden items-center gap-4 lg:flex xl:gap-6"
         >
           {nav.map((item) => {
             const id = idFromHash(item.hash);
@@ -327,7 +326,7 @@ export function StickyHeader() {
                 onClick={(event) => handleAnchorClick(event, item.hash)}
                 aria-current={isActive ? "location" : undefined}
                 className={cn(
-                  "relative py-1 text-sm transition-colors",
+                  "relative py-1 text-[0.8125rem] transition-colors",
                   isActive ? "text-accent" : "text-ink hover:text-accent",
                 )}
               >
@@ -347,7 +346,8 @@ export function StickyHeader() {
         <div inert={open} className="hidden lg:block">
           <a
             href={site.contact.phoneHref}
-            className="inline-flex min-h-11 items-center border border-ink bg-ink px-5 text-sm font-medium text-white transition-colors hover:border-accent-strong hover:bg-accent-strong"
+            aria-label={`${ctaLabels.bookPrimary}: ${site.contact.phone}`}
+            className="action-primary inline-flex min-h-11 items-center border border-ink bg-ink px-5 text-sm font-medium text-white hover:border-accent-strong hover:bg-accent-strong"
           >
             {ctaLabels.book}
           </a>
@@ -413,9 +413,10 @@ export function StickyHeader() {
                   </nav>
                   <a
                     href={site.contact.phoneHref}
+                    aria-label={`${ctaLabels.bookPrimary}: ${site.contact.phone}`}
                     className="mt-5 inline-flex min-h-12 w-full items-center justify-center border border-ink bg-ink px-6 text-sm font-medium text-white"
                   >
-                    {ctaLabels.bookPrimary}
+                    {ctaLabels.book}
                   </a>
                   <p className="mt-4 text-xs text-muted">{site.contact.locationLabel}</p>
                 </div>
@@ -478,9 +479,10 @@ export function StickyHeader() {
 
               <a
                 href={site.contact.phoneHref}
-                className="mt-5 inline-flex min-h-12 w-full items-center justify-center border border-ink bg-ink px-6 text-sm font-medium text-white transition-colors hover:border-accent-strong hover:bg-accent-strong motion-reduce:transition-none"
+                aria-label={`${ctaLabels.bookPrimary}: ${site.contact.phone}`}
+                className="action-primary mt-5 inline-flex min-h-12 w-full items-center justify-center border border-ink bg-ink px-6 text-sm font-medium text-white hover:border-accent-strong hover:bg-accent-strong"
               >
-                {ctaLabels.bookPrimary}
+                {ctaLabels.book}
               </a>
               <p className="mt-4 text-xs text-muted">{site.contact.locationLabel}</p>
             </div>

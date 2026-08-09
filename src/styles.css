@@ -172,6 +172,58 @@
       inset 0 1px 0 rgb(255 254 251 / 0.1);
     transform: translateY(0) scale(0.995);
   }
+
+  .editorial-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--ink);
+    transition: color var(--motion-duration-ui) var(--motion-ease-ui);
+  }
+
+  .editorial-link::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    content: "";
+    background: currentColor;
+    transform: scaleX(0.28);
+    transform-origin: left;
+    transition: transform var(--motion-duration-ui) var(--motion-ease-ui);
+  }
+
+  .editorial-link:hover,
+  .editorial-link:focus-visible {
+    color: var(--accent);
+  }
+
+  .editorial-link:hover::after,
+  .editorial-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  .rito-scroll-arrow {
+    flex-shrink: 0;
+  }
+}
+
+@keyframes rito-scroll-arrow-nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0.28rem);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rito-scroll-arrow {
+    animation: rito-scroll-arrow-nudge 1.55s var(--motion-ease-ui) infinite;
+  }
 }
 
 @keyframes rito-accordion-open {
