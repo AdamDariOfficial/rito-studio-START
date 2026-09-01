@@ -1,6 +1,7 @@
 import { useNavigate } from "@tanstack/react-router";
 import { ArrowDown } from "lucide-react";
 import { type MouseEvent } from "react";
+import { BookingAction } from "@/components/BookingAction";
 import { ctaLabels, site } from "@/lib/site-config";
 import { scrollToSection } from "@/lib/scroll-to-anchor";
 import { useReveal } from "@/hooks/use-reveal";
@@ -51,7 +52,7 @@ export function Hero() {
 
           <div className="relative z-10 order-2 -mt-20 border-t-2 border-accent bg-canvas px-6 py-7 shadow-[0_20px_50px_rgba(27,26,24,0.12)] md:order-1 md:col-span-7 md:mt-0 md:border-0 md:bg-transparent md:p-0 md:pr-6 md:shadow-none">
             <p className="eyebrow" data-reveal style={{ ["--reveal-delay" as string]: "0ms" }}>
-              Beauty &amp; Care Atelier · Padova
+              {site.brand.kicker}
             </p>
 
             <h1
@@ -69,19 +70,19 @@ export function Hero() {
               data-reveal
               style={{ ["--reveal-delay" as string]: "160ms" }}
             >
-              Un atelier contemporaneo dedicato a capelli, pelle e benessere. Trattamenti su misura,
-              gesti precisi e il tempo necessario per ascoltarti.
+              {site.brand.description}
             </p>
 
             <div className="mt-7 flex flex-col items-stretch gap-4 lg:mt-10 lg:flex-row lg:items-center">
-              <a
-                href={site.contact.phoneHref}
-                data-reveal
-                style={{ ["--reveal-delay" as string]: "220ms" }}
-                className="action-primary inline-flex min-h-12 items-center justify-center border border-ink bg-ink px-6 text-sm font-medium tracking-wide text-white hover:border-accent-strong hover:bg-accent-strong"
-              >
-                {ctaLabels.bookPrimary}
-              </a>
+              <div data-reveal style={{ ["--reveal-delay" as string]: "220ms" }}>
+                <BookingAction
+                  kind="booking"
+                  ariaLabel={ctaLabels.bookPrimary}
+                  className="action-primary inline-flex min-h-12 w-full items-center justify-center border border-ink bg-ink px-6 text-sm font-medium tracking-wide text-white hover:border-accent-strong hover:bg-accent-strong lg:w-auto"
+                >
+                  {ctaLabels.bookPrimary}
+                </BookingAction>
+              </div>
               <a
                 href="#trattamenti"
                 onClick={handleTreatmentsClick}
@@ -93,6 +94,21 @@ export function Hero() {
                 <ArrowDown aria-hidden size={18} strokeWidth={1.7} className="rito-scroll-arrow" />
               </a>
             </div>
+
+            <dl
+              className="mt-8 grid gap-4 border-t border-line pt-5 sm:grid-cols-3"
+              data-reveal
+              style={{ ["--reveal-delay" as string]: "240ms" }}
+            >
+              {site.heroMeta.map((item) => (
+                <div key={item.label} className="min-w-0">
+                  <dt className="text-[0.6875rem] uppercase tracking-[0.16em] text-muted">
+                    {item.label}
+                  </dt>
+                  <dd className="mt-1 text-sm leading-snug text-ink">{item.value}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </div>

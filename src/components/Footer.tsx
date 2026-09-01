@@ -25,7 +25,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-ink bg-ink text-white">
-      <div className="container-editorial grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr] md:py-16">
+      <div className="container-editorial grid gap-10 py-14 md:grid-cols-[1.4fr_1fr] md:py-16">
         <div>
           <Link
             to="/"
@@ -45,7 +45,17 @@ export function Footer() {
         <div>
           <p className="eyebrow text-surface">Contatti</p>
           <ul className="mt-4 space-y-2 text-sm text-white">
-            <li>{site.contact.locationLabel}</li>
+            <li>
+              <a
+                href={site.contact.mapExternalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={footerLinkClass}
+                aria-label={`${site.contact.locationLabel} — apri su Google Maps in una nuova scheda`}
+              >
+                {site.contact.locationLabel}
+              </a>
+            </li>
             <li>
               <a href={site.contact.phoneHref} className={footerLinkClass}>
                 {site.contact.phone}
@@ -58,29 +68,21 @@ export function Footer() {
             </li>
           </ul>
         </div>
-
-        <div>
-          <p className="eyebrow text-surface">Info</p>
-          <ul className="mt-4 space-y-2 text-sm text-white">
-            <li>
-              <Link to="/privacy" className={footerLinkClass}>
-                Privacy
-              </Link>
-            </li>
-            <li>
-              <Link to="/cookie" className={footerLinkClass}>
-                Cookie
-              </Link>
-            </li>
-          </ul>
-        </div>
       </div>
 
       <div className="border-t border-white/15">
-        <div className="container-editorial flex flex-col-reverse items-start justify-between gap-3 py-6 text-xs text-surface md:flex-row md:items-center">
-          <p>
-            © {year} {site.brand.name}. Tutti i diritti riservati.
-          </p>
+        <div className="container-editorial flex flex-col items-start justify-between gap-3 py-6 text-xs text-surface md:flex-row md:items-center">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <p>
+              © {year} {site.brand.name}. Tutti i diritti riservati.
+            </p>
+            <Link to="/privacy" className={footerLinkClass}>
+              Privacy
+            </Link>
+            <Link to="/cookie" className={footerLinkClass}>
+              Cookie
+            </Link>
+          </div>
           <p className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
             <span>{site.attribution.text}</span>
             <a

@@ -4,8 +4,42 @@
  * explicit in the discreet demo disclosure and legal routes.
  */
 
-export type BookingMode = "external" | "contact";
+export type ContactIntent = "booking" | "contact";
 
+export type ContactChannelKind = "phone" | "whatsapp" | "email" | "external";
+
+export type ContactChannel = {
+  kind: ContactChannelKind;
+  label: string;
+  detail: string;
+  href: string;
+  external?: boolean;
+};
+
+export type GoogleReview = {
+  author: string;
+  rating: 1 | 2 | 3 | 4 | 5;
+  text: string;
+  dateLabel?: string;
+  reviewUrl?: string;
+};
+
+export type GoogleReviewsConfig = {
+  enabled: boolean;
+  averageRating: number;
+  reviewCount: number;
+  profileUrl: string;
+  reviews: readonly GoogleReview[];
+};
+
+const siteUrl = "https://rito-studio.tretnix.com";
+const phone = "+39 049 000 0000";
+const phoneHref = "tel:+390490000000";
+const email = "info@ritostudio.example";
+const emailHref = `mailto:${email}`;
+const whatsappNumber = "390490000000";
+const whatsappBookingMessage = "Ciao! Vorrei prenotare un appuntamento da RITO Studio.";
+const whatsappHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappBookingMessage)}`;
 const mapQuery = "Prato della Valle, Padova";
 const encodedMapQuery = encodeURIComponent(mapQuery);
 
@@ -14,6 +48,9 @@ export const site = {
     name: "RITO Studio",
     descriptor: "Beauty & Care Atelier",
     tagline: "La bellezza, nel suo ritmo.",
+    kicker: "Beauty & Care Atelier · Padova",
+    description:
+      "Un atelier contemporaneo dedicato a capelli, pelle e benessere. Trattamenti su misura, gesti precisi e il tempo necessario per ascoltarti.",
   },
   contact: {
     city: "Padova centro",
@@ -21,10 +58,10 @@ export const site = {
     locationLabel: "Padova centro · zona Prato della Valle",
     locationDetail:
       "Una zona centrale e facilmente raggiungibile. L'indirizzo esatto viene confermato al momento della prenotazione.",
-    email: "info@ritostudio.example",
-    phone: "+39 049 000 0000",
-    phoneHref: "tel:+390490000000",
-    emailHref: "mailto:info@ritostudio.example",
+    email,
+    phone,
+    phoneHref,
+    emailHref,
     mapQuery,
     mapEmbedUrl: `https://www.google.com/maps?q=${encodedMapQuery}&z=15&output=embed`,
     mapExternalUrl: `https://www.google.com/maps/search/?api=1&query=${encodedMapQuery}`,
@@ -34,9 +71,64 @@ export const site = {
     { label: "Sabato", value: "09:00–17:00" },
     { label: "Domenica e lunedì", value: "chiuso" },
   ],
-  booking: {
-    mode: "contact" as BookingMode,
-  },
+  contactActions: {
+    booking: {
+      dialogTitle: "Come preferisci prenotare?",
+      dialogDescription: "Scegli WhatsApp o telefono.",
+      channels: [
+        {
+          kind: "whatsapp",
+          label: "WhatsApp",
+          detail: "Scrivi ora",
+          href: whatsappHref,
+          external: true,
+        },
+        {
+          kind: "phone",
+          label: "Telefono",
+          detail: "Chiama ora",
+          href: phoneHref,
+        },
+      ] satisfies readonly ContactChannel[],
+    },
+    contact: {
+      dialogTitle: "Come preferisci contattarci?",
+      dialogDescription: "Scegli email o telefono.",
+      channels: [
+        {
+          kind: "email",
+          label: "Email",
+          detail: "Scrivi ora",
+          href: emailHref,
+        },
+        {
+          kind: "phone",
+          label: "Telefono",
+          detail: "Chiama ora",
+          href: phoneHref,
+        },
+      ] satisfies readonly ContactChannel[],
+    },
+  } satisfies Record<
+    ContactIntent,
+    {
+      dialogTitle: string;
+      dialogDescription: string;
+      channels: readonly ContactChannel[];
+    }
+  >,
+  heroMeta: [
+    { label: "Prenotazione", value: "Su appuntamento" },
+    { label: "Dove", value: "Padova centro" },
+    { label: "Orari", value: "Mar–Sab" },
+  ],
+  googleReviews: {
+    enabled: false,
+    averageRating: 0,
+    reviewCount: 0,
+    profileUrl: "",
+    reviews: [],
+  } satisfies GoogleReviewsConfig,
   legal: {
     lastUpdated: "2 agosto 2026",
   },
@@ -46,9 +138,40 @@ export const site = {
     href: "https://tretnix.com",
   },
   seo: {
-    siteUrl: "https://rito-studio.tretnix.com",
+    siteUrl,
+    socialImageUrl: new URL("/images/rito/rito-hero-main.webp", siteUrl).toString(),
   },
 } as const;
+
+export const googleReviewsPreview: GoogleReviewsConfig = {
+  enabled: true,
+  averageRating: 4.9,
+  reviewCount: 128,
+  profileUrl: "https://www.google.com/maps",
+  reviews: [
+    {
+      author: "Anteprima 01",
+      rating: 5,
+      text: "Recensione dimostrativa usata soltanto per verificare gerarchia, lunghezza e comportamento responsive della sezione.",
+      dateLabel: "fixture development",
+      reviewUrl: "https://www.google.com/maps",
+    },
+    {
+      author: "Anteprima 02",
+      rating: 5,
+      text: "Testo sintetico di sviluppo per controllare tipografia editoriale, allineamenti e spaziatura senza pubblicare testimonianze inventate.",
+      dateLabel: "fixture development",
+      reviewUrl: "https://www.google.com/maps",
+    },
+    {
+      author: "Anteprima 03",
+      rating: 5,
+      text: "Fixture non pubblica per validare una terza recensione e la resa della griglia ai breakpoint tablet e desktop.",
+      dateLabel: "fixture development",
+      reviewUrl: "https://www.google.com/maps",
+    },
+  ],
+};
 
 export function canonicalUrl(pathname: string) {
   return new URL(pathname, site.seo.siteUrl).toString();
@@ -60,14 +183,16 @@ export const nav = [
   { label: "Studio", hash: "#studio" },
   { label: "Galleria", hash: "#galleria" },
   { label: "FAQ", hash: "#faq" },
+  ...(site.googleReviews.enabled ? [{ label: "Recensioni", hash: "#recensioni" }] : []),
   { label: "Contatti", hash: "#contatti" },
 ] as const;
 
 export const ctaLabels = {
-  bookPrimary: "Chiama per prenotare",
+  bookPrimary: "Prenota un appuntamento",
   discoverTreatments: "Scopri i trattamenti",
-  requestAppointment: "Chiama per un appuntamento",
+  requestAppointment: "Prenota un appuntamento",
   book: "Prenota",
+  contact: "Contattaci",
 } as const;
 
 export const serviceCategories = [

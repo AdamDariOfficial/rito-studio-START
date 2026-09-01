@@ -1,8 +1,8 @@
 # RITO Studio — Decision Log
 
 **Famiglia:** Beauty & Wellness
-**Versione:** 1.1
-**Stato:** decisioni approvate e aggiornate all'8 agosto 2026
+**Versione:** 1.3
+**Stato:** decisioni approvate e aggiornate al 31 agosto 2026
 
 ## BW-DEC-001 — Concept portfolio
 
@@ -312,3 +312,116 @@ gallery, catalogo trattamenti e architettura one-page START non vengono modifica
 
 **Limite:** questa decisione non prova un nuovo deploy di produzione e non sposta
 automaticamente alcun freeze precedentemente dichiarato.
+
+
+## BW-DEC-036 — Parità funzionale START con Forno Lume, identità Beauty invariata
+
+**Decisione:** usare la baseline frozen corrente di Forno Lume START come benchmark di
+completezza funzionale per RITO Studio START, senza ereditarne identità visuale, composizione,
+palette, tipografia, radius, ombre o linguaggio motion. RITO mantiene Newsreader + Manrope,
+porcellana/inchiostro/borgogna, superfici quasi squadrate, fotografia tattile e ritmo editoriale.
+
+Il pass di parità introduce nello START RITO, nello stesso change set controllato:
+
+- `BookingAction` configurabile per uno o più canali di prenotazione;
+- CTA principali collegate all'adapter invece che al canale hard-coded;
+- una trust band editoriale minimale subito dopo la hero;
+- microinformazioni pratiche nella hero;
+- sezione recensioni Google opzionale, assente quando non configurata;
+- fixture recensioni disponibile esclusivamente in development tramite `?reviewsPreview=1`;
+- voce `Recensioni` nella navigazione soltanto quando recensioni reali sono abilitate;
+- `RouteFocus` per reset immediato in alto e focus sul `main` nelle vere navigazioni `PUSH`;
+- metadata social completi con immagine e `WebSite`/`WebPage` JSON-LD neutro.
+
+**Chiarimento su BW-DEC-025:** la configurazione portfolio corrente resta telefonica e quindi,
+con un solo canale configurato, `BookingAction` produce direttamente il link `tel:` senza dialog.
+BW-DEC-025 resta valido come configurazione del concept, ma non è più un vincolo architetturale:
+un cliente reale può configurare telefono, WhatsApp o provider esterno e, con più canali,
+l'adapter presenta una scelta accessibile senza cambiare i componenti consumer. Il fallback
+`noscript` della navbar resta sul canale telefonico del concept.
+
+**Integrità recensioni:** `site.googleReviews.enabled` resta `false` e l'array pubblico resta
+vuoto finché non vengono forniti dati autentici. Le fixture development sono esplicitamente
+marcate come anteprime tecniche e non devono essere pubblicate come testimonianze reali.
+
+**Ordine home risultante:** `StickyHeader`, `Hero`, `TrustBand`, `EditorialServiceList`,
+`RitualFeature`, `StudioEditorial`, `GalleryRail`, `FaqSection`, `ReviewsSection` opzionale,
+`BookingCTA`, `PracticalInfo`, `Footer`.
+
+**Esclusioni:** nessun backend, form, database, booking nativo, disponibilità live, pagamento,
+CRM, dipendenza nuova, `LocalBusiness` structured data, redesign Hospitality, modifica della
+gallery o sostituzione degli asset.
+
+**Gate:** il presente requisito autorizza preparazione e applicazione locale tramite Controlled
+Change Package. Validazione automatica, browser QA, diff review, stage, commit, push, PR, merge
+e deploy restano checkpoint separati; nessuno è implicito.
+
+
+## BW-DEC-037 — Consolidamento conversione, mappa, recensioni e rimozione TrustBand
+
+**Decisione:** il feedback browser approvato del 31 agosto 2026 aggiorna il candidate START
+senza riaprire l'identità visuale Beauty & Wellness.
+
+Sono approvati nello stesso pass controllato:
+
+- due intenti di conversione distinti, coerenti con il pattern Hospitality verificato:
+  - `booking` presenta WhatsApp e telefono;
+  - `contact` presenta email e telefono;
+- CTA di prenotazione e contatto consumano lo stesso adapter configurabile senza backend o
+  booking nativo;
+- la configurazione demo usa esclusivamente email `.example` e numero non operativo;
+- nella sezione informazioni pratiche `locationLabel` vive nella colonna informativa di sinistra
+  e non viene ripetuto sotto la mappa;
+- la barra sotto la mappa mantiene `Disattiva mappa` a sinistra quando attiva e
+  `Apri su Google Maps` a destra; il consenso on-demand e il fallback `noscript` restano invariati;
+- le recensioni opzionali usano una griglia `1` su mobile, `2 + 1` su tablet e `3` su desktop
+  ampio, mantenendo tipografia, bordi e linguaggio visuale RITO;
+- la `TrustBand` statica introdotta da BW-DEC-036 viene rimossa senza sostituzione nello START;
+  anche la relativa configurazione `site.trust` viene eliminata.
+
+**Precedenza:** questa decisione sostituisce BW-DEC-025 per la configurazione di conversione
+del concept corrente e sostituisce BW-DEC-036 nei punti relativi a `BookingAction` e
+`TrustBand`. Restano validi RouteFocus, recensioni opzionali real-only, fixture development,
+metadata social e JSON-LD neutro introdotti da BW-DEC-036.
+
+**Footer:** RITO adotta il pattern legale compatto condiviso: copyright, `Privacy` e `Cookie`
+nella fascia utility inferiore insieme all’attribuzione Tretnix, senza una colonna `Info` o
+`Legale` separata quando non aggiunge valore informativo. L’attribuzione approvata resta invariata.
+
+**Esclusioni:** nessuna dipendenza nuova, backend, form, database, disponibilità live, pagamento,
+CRM, redesign Hospitality, modifica degli asset o deploy.
+
+## BW-DEC-038 — Freeze finale START e consolidamento BUSINESS sul lineage aggiornato
+
+**Data:** 31 agosto 2026
+
+**Decisione:** il candidate RITO Studio START risultante dai pass di parita funzionale,
+consolidamento conversione, browser-QA contact polish e visual cleanup e approvato come
+candidate finale da congelare formalmente.
+
+Il freeze diventa canonico soltanto quando il contenuto validato viene registrato in un
+commit Git esplicito e il tag locale `family-start-v1.0` punta esattamente a quel commit.
+Stage, commit, tag, push, PR e merge non vengono eseguiti automaticamente dal Controlled
+Change Package.
+
+Dopo il checkpoint Git, RITO Studio BUSINESS e autorizzato a riconciliare il proprio lineage
+con il nuovo freeze START senza ricostruire il prodotto da zero. Il repository BUSINESS
+esistente resta la base operativa; le differenze BUSINESS approvate restano intenzionali.
+
+**Evidenza disponibile:**
+
+- `RITO-START-Conversion-UX-Knowledge-CCP v1.0.5` — Apply/Validate PASS;
+- `RITO-START-Browser-QA-Contact-Polish-CCP v1.0.0` — Apply/Validate PASS;
+- `RITO-START-Browser-QA-Contact-Visual-Cleanup-CCP v1.0.0` — Apply/Validate PASS;
+- browser QA mirato ha prodotto e corretto i finding su mappa, popup navbar, icone contatto
+  e footer;
+- code-first rhythm audit del 31 agosto 2026 non ha rilevato correzioni di ritmo da applicare;
+- l'utente ha autorizzato esplicitamente il freeze START e la prosecuzione BUSINESS.
+
+**Limite di evidenza:** le ultime due micro-correzioni visuali (rimozione underline persistente
+dell'indirizzo footer e rimozione bordi autonomi delle icone popup) hanno superato i gate
+automatici, ma non viene dichiarato un ulteriore browser run completo non documentato.
+L'approvazione di freeze dell'utente accetta questo limite noto; non trasforma un controllo
+non eseguito in un PASS.
+
+**BUSINESS PLUS:** non viene aperto o modificato da questa decisione.

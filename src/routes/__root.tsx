@@ -10,6 +10,8 @@ import {
 import type { ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { RouteFocus } from "@/components/RouteFocus";
+import { site } from "@/lib/site-config";
 
 function NotFoundComponent() {
   return (
@@ -92,14 +94,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         },
         {
           name: "description",
-          content:
-            "Beauty & Care Atelier a Padova: trattamenti su misura per capelli, pelle e benessere.",
+          content: site.brand.description,
         },
         { name: "robots", content: "noindex, follow" },
         { name: "author", content: "Tretnix" },
         { property: "og:type", content: "website" },
         { property: "og:locale", content: "it_IT" },
+        { property: "og:site_name", content: site.brand.name },
+        { property: "og:image", content: site.seo.socialImageUrl },
         { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: "RITO Studio — Beauty & Care Atelier · Padova" },
+        { name: "twitter:description", content: site.brand.description },
+        { name: "twitter:image", content: site.seo.socialImageUrl },
       ],
       links: [
         { rel: "stylesheet", href: appCss },
@@ -141,6 +147,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <RouteFocus />
       <Outlet />
     </QueryClientProvider>
   );
