@@ -46,14 +46,8 @@ export function Footer() {
           <p className="eyebrow text-surface">Contatti</p>
           <ul className="mt-4 space-y-2 text-sm text-white">
             <li>
-              <a
-                href={site.contact.mapExternalUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={footerLinkClass}
-                aria-label={`${site.contact.locationLabel} — apri su Google Maps in una nuova scheda`}
-              >
-                {site.contact.locationLabel}
+              <a href={site.contact.emailHref} className={footerLinkClass}>
+                {site.contact.email}
               </a>
             </li>
             <li>
@@ -62,8 +56,25 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href={site.contact.emailHref} className={footerLinkClass}>
-                {site.contact.email}
+              <a
+                href={site.contact.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={footerLinkClass}
+                aria-label="WhatsApp — apri la chat in una nuova scheda"
+              >
+                WhatsApp
+              </a>
+            </li>
+            <li>
+              <a
+                href={site.contact.mapExternalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={footerLinkClass}
+                aria-label={`${site.contact.locationLabel} — apri su Google Maps in una nuova scheda`}
+              >
+                {site.contact.locationLabel}
               </a>
             </li>
           </ul>

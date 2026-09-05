@@ -62,6 +62,7 @@ export const site = {
     phone,
     phoneHref,
     emailHref,
+    whatsappHref,
     mapQuery,
     mapEmbedUrl: `https://www.google.com/maps?q=${encodedMapQuery}&z=15&output=embed`,
     mapExternalUrl: `https://www.google.com/maps/search/?api=1&query=${encodedMapQuery}`,
