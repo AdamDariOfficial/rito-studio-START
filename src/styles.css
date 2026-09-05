@@ -31,15 +31,15 @@
 }
 
 :root {
-  --canvas: #F6F4EF;
-  --surface: #E8E1D8;
-  --ink: #1B1A18;
-  --muted: #746E67;
-  --muted-on-surface: #625C55;
-  --accent: #6A3F4B;
-  --accent-strong: #4E2E33;
-  --line: #CEC6BC;
-  --white: #FFFEFB;
+  --canvas: #f6f4ef;
+  --surface: #e8e1d8;
+  --ink: #1b1a18;
+  --muted: #746e67;
+  --muted-on-surface: #625c55;
+  --accent: #6a3f4b;
+  --accent-strong: #4e2e33;
+  --line: #cec6bc;
+  --white: #fffefb;
 
   --header-height: 68px;
 
@@ -86,7 +86,10 @@
     color: var(--white);
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     font-weight: 400;
     letter-spacing: -0.01em;
@@ -170,6 +173,56 @@
     box-shadow:
       0 5px 14px rgb(27 26 24 / 0.13),
       inset 0 1px 0 rgb(255 254 251 / 0.1);
+    transform: translateY(0) scale(0.995);
+  }
+
+  /*
+   * Light counterpart of the approved premium dark CTA motion.
+   * Keeps white CTA surfaces white while using the same timing, sweep,
+   * lift and active compression with an inverse low-contrast sheen.
+   */
+  .action-primary-light {
+    background-color: var(--white) !important;
+    border-color: var(--white) !important;
+    background-image: linear-gradient(
+      108deg,
+      transparent 0%,
+      transparent 34%,
+      rgb(27 26 24 / 0.055) 48%,
+      transparent 62%,
+      transparent 100%
+    );
+    background-position: 100% 50%;
+    background-size: 245% 100%;
+    transition:
+      background-position 640ms var(--motion-ease-reveal),
+      box-shadow 360ms var(--motion-ease-ui),
+      transform 360ms var(--motion-ease-ui);
+  }
+
+  .action-primary-light:focus-visible {
+    background-position: 0 50%;
+    box-shadow:
+      0 12px 28px rgb(27 26 24 / 0.16),
+      inset 0 1px 0 rgb(255 255 255 / 0.88);
+    transform: translateY(-1px);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .action-primary-light:hover {
+      background-position: 0 50%;
+      box-shadow:
+        0 12px 28px rgb(27 26 24 / 0.16),
+        inset 0 1px 0 rgb(255 255 255 / 0.88);
+      transform: translateY(-1px);
+    }
+  }
+
+  .action-primary-light:active {
+    background-position: 22% 50%;
+    box-shadow:
+      0 5px 14px rgb(27 26 24 / 0.13),
+      inset 0 1px 0 rgb(255 255 255 / 0.82);
     transform: translateY(0) scale(0.995);
   }
 
@@ -381,6 +434,20 @@
   transform: none;
 }
 
+[data-divider-reveal] {
+  opacity: 1;
+}
+
+.js [data-divider-reveal] {
+  opacity: 0;
+  transition: opacity var(--motion-duration-reveal) var(--motion-ease-reveal);
+  transition-delay: var(--divider-reveal-delay, 0ms);
+}
+
+.js [data-divider-reveal][data-divider-revealed="true"] {
+  opacity: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .js [data-reveal] {
     opacity: 1;
@@ -388,7 +455,14 @@
     transition: none;
   }
 
-  *, *::before, *::after {
+  .js [data-divider-reveal] {
+    opacity: 1;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
@@ -397,6 +471,10 @@
 
   .action-primary:hover,
   .action-primary:active,
+  .action-primary-light,
+  .action-primary-light:hover,
+  .action-primary-light:focus-visible,
+  .action-primary-light:active,
   :is(a, button).bg-ink:not(.rounded-full),
   :is(a, button).bg-ink:not(.rounded-full):hover,
   :is(a, button).bg-ink:not(.rounded-full):focus-visible,
@@ -404,6 +482,7 @@
     transform: none !important;
   }
 
+  .action-primary-light,
   :is(a, button).bg-ink:not(.rounded-full) {
     background-image: none;
   }

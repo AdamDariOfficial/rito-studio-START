@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Footer } from "@/components/Footer";
+import { RevealDivider } from "@/components/RevealDivider";
 import { StickyHeader } from "@/components/StickyHeader";
 import { site } from "@/lib/site-config";
 
@@ -35,7 +36,8 @@ export function PolicyLayout({ title, intro, children }: PolicyLayoutProps) {
             e sottoposta a revisione professionale.
           </aside>
 
-          <p className="mt-10 border-t border-line pt-6 text-xs text-muted">
+          <p className="relative mt-10 border-t border-transparent pt-6 text-xs text-muted">
+            <RevealDivider className="inset-x-0 -top-px h-px bg-line" />
             Ultimo aggiornamento: {site.legal.lastUpdated}
           </p>
         </article>

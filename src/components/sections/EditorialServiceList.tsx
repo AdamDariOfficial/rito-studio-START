@@ -1,3 +1,4 @@
+import { RevealDivider } from "@/components/RevealDivider";
 import { serviceCategories, servicesNote } from "@/lib/site-config";
 
 export function EditorialServiceList() {
@@ -34,11 +35,12 @@ export function EditorialServiceList() {
           </div>
         </div>
 
-        <ol className="mt-12 border-t border-line md:mt-16">
+        <ol className="relative mt-12 border-t border-transparent md:mt-16">
+          <RevealDivider className="inset-x-0 -top-px h-px bg-line" />
           {serviceCategories.map((category) => (
             <li
               key={category.name}
-              className="grid gap-5 border-b border-line py-7 md:grid-cols-12 md:gap-8 md:py-10"
+              className="relative grid gap-5 border-b border-transparent py-7 md:grid-cols-12 md:gap-8 md:py-10"
             >
               <div className="flex items-baseline gap-4 md:col-span-4" data-reveal>
                 <span className="font-display text-2xl text-accent">{category.index}</span>
@@ -50,17 +52,29 @@ export function EditorialServiceList() {
                 {category.items.map((item, index) => (
                   <li
                     key={item.name}
-                    className="flex items-baseline justify-between gap-4 border-t border-line/70 py-3 first:border-t-0 md:[&:nth-child(2)]:border-t-0"
-                    data-reveal
+                    className="relative flex items-baseline justify-between gap-4 border-t border-transparent py-3 first:border-t-0 md:[&:nth-child(2)]:border-t-0"
                     style={{ ["--reveal-delay" as string]: `${index * 45}ms` }}
                   >
-                    <span className="min-w-0">{item.name}</span>
-                    <span className="shrink-0 whitespace-nowrap font-medium tabular-nums text-accent-strong">
+                    <span className="min-w-0" data-reveal>
+                      {item.name}
+                    </span>
+                    <span
+                      className="shrink-0 whitespace-nowrap font-medium tabular-nums text-accent-strong"
+                      data-reveal
+                    >
                       {item.price}
                     </span>
+                    {index > 0 && (
+                      <RevealDivider
+                        className={`inset-x-0 -top-px h-px bg-line/70 ${
+                          index === 1 ? "md:hidden" : ""
+                        }`}
+                      />
+                    )}
                   </li>
                 ))}
               </ul>
+              <RevealDivider className="inset-x-0 -bottom-px h-px bg-line" />
             </li>
           ))}
         </ol>

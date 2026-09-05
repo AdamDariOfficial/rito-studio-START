@@ -27,27 +27,36 @@ export function BookingCTA() {
                 Raccontaci cosa stai cercando. Ti aiutiamo a scegliere il trattamento e il momento
                 più adatto.
               </p>
-              <div
-                className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap"
-                data-reveal
-                style={{ ["--reveal-delay" as string]: "160ms" }}
-              >
-                <BookingAction
-                  kind="booking"
-                  ariaLabel={ctaLabels.requestAppointment}
-                  className="action-primary inline-flex min-h-12 items-center justify-center gap-2 border border-white bg-white px-6 text-sm font-medium text-ink hover:border-surface hover:bg-surface focus-visible:outline-white"
+              <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap">
+                <div
+                  className="w-full sm:w-auto"
+                  data-reveal
+                  style={{ ["--reveal-delay" as string]: "160ms" }}
                 >
-                  <MessageCircle aria-hidden size={16} strokeWidth={1.7} />
-                  {ctaLabels.requestAppointment}
-                </BookingAction>
-                <BookingAction
-                  kind="contact"
-                  ariaLabel={ctaLabels.contact}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 border border-white/35 px-6 text-sm font-medium text-white transition-colors hover:border-white hover:bg-white/10 focus-visible:outline-white"
+                  <BookingAction
+                    kind="booking"
+                    ariaLabel={ctaLabels.requestAppointment}
+                    className="action-primary action-primary-light inline-flex min-h-12 w-full items-center justify-center gap-2 border border-white bg-white px-6 text-sm font-medium text-ink focus-visible:outline-white sm:w-auto"
+                  >
+                    <MessageCircle aria-hidden size={16} strokeWidth={1.7} />
+                    {ctaLabels.requestAppointment}
+                  </BookingAction>
+                </div>
+
+                <div
+                  className="w-full sm:w-auto"
+                  data-reveal
+                  style={{ ["--reveal-delay" as string]: "240ms" }}
                 >
-                  <Mail aria-hidden size={16} strokeWidth={1.7} />
-                  {ctaLabels.contact}
-                </BookingAction>
+                  <BookingAction
+                    kind="contact"
+                    ariaLabel={ctaLabels.contact}
+                    className="inline-flex min-h-12 w-full items-center justify-center gap-2 border border-white/35 px-6 text-sm font-medium text-white transition-colors hover:border-white hover:bg-white/10 focus-visible:outline-white sm:w-auto"
+                  >
+                    <Mail aria-hidden size={16} strokeWidth={1.7} />
+                    {ctaLabels.contact}
+                  </BookingAction>
+                </div>
               </div>
             </div>
           </div>

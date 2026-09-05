@@ -2,6 +2,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { ArrowDown } from "lucide-react";
 import { type MouseEvent } from "react";
 import { BookingAction } from "@/components/BookingAction";
+import { RevealDivider } from "@/components/RevealDivider";
 import { ctaLabels, site } from "@/lib/site-config";
 import { scrollToSection } from "@/lib/scroll-to-anchor";
 import { useReveal } from "@/hooks/use-reveal";
@@ -95,20 +96,19 @@ export function Hero() {
               </a>
             </div>
 
-            <dl
-              className="mt-8 grid gap-4 border-t border-line pt-5 sm:grid-cols-3"
-              data-reveal
-              style={{ ["--reveal-delay" as string]: "240ms" }}
-            >
-              {site.heroMeta.map((item) => (
-                <div key={item.label} className="min-w-0">
-                  <dt className="text-[0.6875rem] uppercase tracking-[0.16em] text-muted">
-                    {item.label}
-                  </dt>
-                  <dd className="mt-1 text-sm leading-snug text-ink">{item.value}</dd>
-                </div>
-              ))}
-            </dl>
+            <div className="relative mt-8" style={{ ["--reveal-delay" as string]: "240ms" }}>
+              <RevealDivider className="inset-x-0 top-0 h-px bg-line" />
+              <dl className="grid gap-4 border-t border-transparent pt-5 sm:grid-cols-3">
+                {site.heroMeta.map((item) => (
+                  <div key={item.label} className="min-w-0" data-reveal>
+                    <dt className="text-[0.6875rem] uppercase tracking-[0.16em] text-muted">
+                      {item.label}
+                    </dt>
+                    <dd className="mt-1 text-sm leading-snug text-ink">{item.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
           </div>
         </div>
       </div>

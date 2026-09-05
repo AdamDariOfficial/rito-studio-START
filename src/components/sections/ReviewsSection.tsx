@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ExternalLink, Quote, Star } from "lucide-react";
+import { RevealDivider } from "@/components/RevealDivider";
 import { googleReviewsPreview, site } from "@/lib/site-config";
 
 export function ReviewsSection() {
@@ -21,8 +22,9 @@ export function ReviewsSection() {
     <section
       id="recensioni"
       aria-labelledby="recensioni-heading"
-      className="scroll-mt-[calc(var(--header-height)+24px)] border-t border-line bg-canvas py-20 md:py-28"
+      className="relative scroll-mt-[calc(var(--header-height)+24px)] border-t border-transparent bg-canvas py-20 md:py-28"
     >
+      <RevealDivider className="inset-x-0 -top-px h-px bg-line" />
       <div className="container-editorial">
         <div className="grid gap-8 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7" data-reveal>
@@ -35,10 +37,11 @@ export function ReviewsSection() {
             </h2>
           </div>
 
-          <div className="md:col-span-5 md:justify-self-end" data-reveal>
-            <div className="border-l border-line pl-5">
+          <div className="md:col-span-5 md:justify-self-end">
+            <div className="relative border-l border-transparent pl-5">
+              <RevealDivider className="inset-y-0 -left-px w-px bg-line" />
               {config.averageRating > 0 && (
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3" data-reveal>
                   <span className="font-display text-3xl text-ink">
                     {config.averageRating.toLocaleString("it-IT", {
                       minimumFractionDigits: 1,
@@ -61,7 +64,7 @@ export function ReviewsSection() {
                 </div>
               )}
               {config.reviewCount > 0 && (
-                <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted">
+                <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted" data-reveal>
                   {config.reviewCount.toLocaleString("it-IT")} recensioni
                 </p>
               )}
@@ -75,11 +78,15 @@ export function ReviewsSection() {
               key={`${review.author}-${index}`}
               className={`${
                 index === 2 ? "sm:col-span-2 min-[1100px]:col-span-1" : ""
-              } border-t border-line pt-7 min-[1100px]:border-l min-[1100px]:border-t-0 min-[1100px]:px-8 min-[1100px]:first:border-l-0 min-[1100px]:first:pl-0 min-[1100px]:last:pr-0`}
-              data-reveal
+              } relative border-t border-transparent pt-7 min-[1100px]:border-l min-[1100px]:border-t-0 min-[1100px]:px-8 min-[1100px]:first:border-l-0 min-[1100px]:first:pl-0 min-[1100px]:last:pr-0`}
               style={{ ["--reveal-delay" as string]: `${index * 70}ms` }}
             >
-              <div className="flex items-start justify-between gap-4">
+              <RevealDivider className="inset-x-0 -top-px h-px bg-line min-[1100px]:hidden" />
+              {index > 0 && (
+                <RevealDivider className="inset-y-0 -left-px hidden w-px bg-line min-[1100px]:block" />
+              )}
+
+              <div className="flex items-start justify-between gap-4" data-reveal>
                 <span
                   className="flex items-center gap-0.5 text-accent"
                   aria-label={`${review.rating} stelle su 5`}
@@ -96,13 +103,22 @@ export function ReviewsSection() {
                 <Quote aria-hidden size={22} strokeWidth={1.3} className="text-accent/45" />
               </div>
 
-              <blockquote className="mt-6 font-display text-[1.35rem] leading-[1.45] text-ink">
+              <blockquote
+                className="mt-6 font-display text-[1.35rem] leading-[1.45] text-ink"
+                data-reveal
+              >
                 “{review.text}”
               </blockquote>
 
-              <div className="mt-7 border-t border-line pt-5 text-sm">
-                <p className="font-medium text-ink">{review.author}</p>
-                <div className="mt-1 flex flex-wrap items-center justify-between gap-3 text-xs text-muted">
+              <div className="relative mt-7 border-t border-transparent pt-5 text-sm">
+                <RevealDivider className="inset-x-0 -top-px h-px bg-line" />
+                <p className="font-medium text-ink" data-reveal>
+                  {review.author}
+                </p>
+                <div
+                  className="mt-1 flex flex-wrap items-center justify-between gap-3 text-xs text-muted"
+                  data-reveal
+                >
                   <span>{review.dateLabel ?? "Google"}</span>
                   {review.reviewUrl && (
                     <a
