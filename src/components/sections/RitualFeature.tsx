@@ -1,4 +1,5 @@
 import { ImagePlaceholder } from "@/components/ImagePlaceholder";
+import { RevealDivider } from "@/components/RevealDivider";
 
 const methodSteps = [
   {
@@ -48,25 +49,32 @@ export function RitualFeature() {
             </p>
 
             <ol
-              className="mt-10 max-w-xl border-t border-line"
+              className="relative mt-10 max-w-xl border-t border-transparent"
               aria-label="I tre principi del metodo"
             >
+              <RevealDivider className="inset-x-0 -top-px h-px bg-line" />
               {methodSteps.map((step, index) => (
                 <li
                   key={step.index}
-                  className="grid grid-cols-[3.5rem_minmax(0,1fr)] items-center gap-x-4 gap-y-3 border-b border-line py-7 md:grid-cols-[3.25rem_minmax(0,10rem)_minmax(0,1fr)] md:gap-x-5 md:py-10"
-                  data-reveal
+                  className="relative grid grid-cols-[3.5rem_minmax(0,1fr)] items-center gap-x-4 gap-y-3 border-b border-transparent py-7 md:grid-cols-[3.25rem_minmax(0,10rem)_minmax(0,1fr)] md:gap-x-5 md:py-10"
                   style={{ ["--reveal-delay" as string]: `${180 + index * 30}ms` }}
                 >
-                  <span className="font-display text-2xl leading-none text-accent">
+                  <span className="font-display text-2xl leading-none text-accent" data-reveal>
                     {step.index}
                   </span>
-                  <h3 className="font-display text-2xl leading-tight text-ink md:text-3xl">
+                  <h3
+                    className="font-display text-2xl leading-tight text-ink md:text-3xl"
+                    data-reveal
+                  >
                     {step.title}
                   </h3>
-                  <p className="col-start-2 max-w-md text-sm leading-relaxed text-muted md:col-start-auto md:text-base">
+                  <p
+                    className="col-start-2 max-w-md text-sm leading-relaxed text-muted md:col-start-auto md:text-base"
+                    data-reveal
+                  >
                     {step.body}
                   </p>
+                  <RevealDivider className="inset-x-0 -bottom-px h-px bg-line" />
                 </li>
               ))}
             </ol>

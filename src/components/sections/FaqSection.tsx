@@ -1,12 +1,14 @@
 import { FaqAccordion } from "@/components/FaqAccordion";
+import { RevealDivider } from "@/components/RevealDivider";
 
 export function FaqSection() {
   return (
     <section
       id="faq"
       aria-labelledby="faq-heading"
-      className="scroll-mt-[calc(var(--header-height)+24px)] border-t border-line bg-canvas py-20 md:py-24"
+      className="relative scroll-mt-[calc(var(--header-height)+24px)] border-t border-transparent bg-canvas py-20 md:py-24"
     >
+      <RevealDivider className="inset-x-0 -top-px h-px bg-line" />
       <div className="container-editorial grid gap-10 md:grid-cols-12">
         <div className="md:col-span-4">
           <p className="eyebrow">Prima dell'appuntamento</p>

@@ -2,19 +2,30 @@ import { useEffect } from "react";
 
 /**
  * Global reveal controller. Adds `.js` to <html> and observes every element
- * that carries a `data-reveal` attribute, promoting it to `data-revealed`
- * when it enters the viewport. Elements already revealed are skipped. When
- * IntersectionObserver is unavailable, every element is revealed immediately.
+ * that carries a content or divider reveal attribute, promoting it to its
+ * revealed state when it enters the viewport. Elements already revealed are
+ * skipped. When IntersectionObserver is unavailable, every element is revealed
+ * immediately.
  */
 export function useRevealController() {
   useEffect(() => {
     const html = document.documentElement;
     html.classList.add("js");
 
+    function revealElement(el: HTMLElement) {
+      if (el.hasAttribute("data-reveal")) {
+        el.dataset.revealed = "true";
+      }
+
+      if (el.hasAttribute("data-divider-reveal")) {
+        el.dataset.dividerRevealed = "true";
+      }
+    }
+
     if (typeof IntersectionObserver === "undefined") {
       document
-        .querySelectorAll<HTMLElement>("[data-reveal]")
-        .forEach((el) => (el.dataset.revealed = "true"));
+        .querySelectorAll<HTMLElement>("[data-reveal], [data-divider-reveal]")
+        .forEach(revealElement);
       return;
     }
 
@@ -22,7 +33,7 @@ export function useRevealController() {
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            (entry.target as HTMLElement).dataset.revealed = "true";
+            revealElement(entry.target as HTMLElement);
             io.unobserve(entry.target);
           }
         }
@@ -32,7 +43,9 @@ export function useRevealController() {
 
     function observeAll() {
       document
-        .querySelectorAll<HTMLElement>("[data-reveal]:not([data-revealed])")
+        .querySelectorAll<HTMLElement>(
+          "[data-reveal]:not([data-revealed]), [data-divider-reveal]:not([data-divider-revealed])",
+        )
         .forEach((el) => io.observe(el));
     }
 

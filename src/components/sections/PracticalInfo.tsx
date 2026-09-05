@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import { RevealDivider } from "@/components/RevealDivider";
 import { site } from "@/lib/site-config";
 
 export function PracticalInfo() {
@@ -9,8 +10,9 @@ export function PracticalInfo() {
     <section
       id="contatti"
       aria-labelledby="contatti-heading"
-      className="scroll-mt-[calc(var(--header-height)+24px)] border-t border-line bg-canvas py-20 md:py-28"
+      className="relative scroll-mt-[calc(var(--header-height)+24px)] border-t border-transparent bg-canvas py-20 md:py-28"
     >
+      <RevealDivider className="inset-x-0 -top-px h-px bg-line" />
       <div className="container-editorial">
         <p id="contatti-heading" className="eyebrow">
           Informazioni pratiche
@@ -28,10 +30,11 @@ export function PracticalInfo() {
                 {site.hours.map((h) => (
                   <div
                     key={h.label}
-                    className="flex justify-between gap-6 border-b border-line pb-2"
+                    className="relative flex justify-between gap-6 border-b border-transparent pb-2"
                   >
                     <dt className="text-muted">{h.label}</dt>
                     <dd>{h.value}</dd>
+                    <RevealDivider className="inset-x-0 -bottom-px h-px bg-line" />
                   </div>
                 ))}
               </dl>
@@ -42,7 +45,7 @@ export function PracticalInfo() {
                     href={site.contact.mapExternalUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-ink underline-offset-4 hover:underline"
+                    className="inline-flex items-center gap-2 text-ink underline decoration-line underline-offset-4 transition-[color,text-decoration-color] hover:text-accent hover:decoration-accent"
                   >
                     <MapPin aria-hidden size={15} strokeWidth={1.5} className="text-accent" />
                     {site.contact.locationLabel}
@@ -51,7 +54,7 @@ export function PracticalInfo() {
                 <li>
                   <a
                     href={site.contact.phoneHref}
-                    className="inline-flex items-center gap-2 text-ink underline-offset-4 hover:underline"
+                    className="inline-flex items-center gap-2 text-ink underline decoration-line underline-offset-4 transition-[color,text-decoration-color] hover:text-accent hover:decoration-accent"
                   >
                     <Phone aria-hidden size={15} strokeWidth={1.5} className="text-accent" />
                     {site.contact.phone}
@@ -60,7 +63,7 @@ export function PracticalInfo() {
                 <li>
                   <a
                     href={site.contact.emailHref}
-                    className="inline-flex items-center gap-2 text-ink underline-offset-4 hover:underline"
+                    className="inline-flex items-center gap-2 text-ink underline decoration-line underline-offset-4 transition-[color,text-decoration-color] hover:text-accent hover:decoration-accent"
                   >
                     <Mail aria-hidden size={15} strokeWidth={1.5} className="text-accent" />
                     {site.contact.email}
@@ -129,7 +132,7 @@ export function PracticalInfo() {
                 href={site.contact.mapExternalUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex shrink-0 items-center gap-1.5 text-ink underline-offset-4 hover:underline"
+                className="inline-flex shrink-0 items-center gap-1.5 text-ink underline decoration-line underline-offset-4 transition-[color,text-decoration-color] hover:text-accent hover:decoration-accent"
               >
                 Apri su Google Maps
                 <ExternalLink aria-hidden size={13} />

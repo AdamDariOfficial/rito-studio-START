@@ -1,11 +1,12 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { type MouseEvent } from "react";
+import { RevealDivider } from "@/components/RevealDivider";
 import { scrollToTop } from "@/lib/scroll-to-anchor";
 import { site } from "@/lib/site-config";
 
 const footerLinkClass =
-  "text-white transition-colors hover:text-surface focus-visible:outline-white";
+  "text-white underline decoration-white/35 underline-offset-4 transition-[color,text-decoration-color] hover:text-surface hover:decoration-surface focus-visible:outline-white";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -81,18 +82,21 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/15">
+      <div className="relative border-t border-transparent">
+        <RevealDivider className="inset-x-0 -top-px h-px bg-white/15" />
         <div className="container-editorial flex flex-col items-start justify-between gap-3 py-6 text-xs text-surface md:flex-row md:items-center">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <p>
               © {year} {site.brand.name}. Tutti i diritti riservati.
             </p>
-            <Link to="/privacy" className={footerLinkClass}>
-              Privacy
-            </Link>
-            <Link to="/cookie" className={footerLinkClass}>
-              Cookie
-            </Link>
+            <span className="inline-flex shrink-0 items-center gap-x-4">
+              <Link to="/privacy" className={footerLinkClass}>
+                Privacy
+              </Link>
+              <Link to="/cookie" className={footerLinkClass}>
+                Cookie
+              </Link>
+            </span>
           </div>
           <p className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
             <span>{site.attribution.text}</span>
