@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ExternalLink, MapPin } from "lucide-react";
+import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import { site } from "@/lib/site-config";
 
 export function PracticalInfo() {
@@ -39,17 +39,30 @@ export function PracticalInfo() {
               <ul className="space-y-3 text-sm text-ink">
                 <li>
                   <a
-                    href={site.contact.phoneHref}
-                    className="text-ink underline-offset-4 hover:underline"
+                    href={site.contact.mapExternalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-ink underline-offset-4 hover:underline"
                   >
+                    <MapPin aria-hidden size={15} strokeWidth={1.5} className="text-accent" />
+                    {site.contact.locationLabel}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={site.contact.phoneHref}
+                    className="inline-flex items-center gap-2 text-ink underline-offset-4 hover:underline"
+                  >
+                    <Phone aria-hidden size={15} strokeWidth={1.5} className="text-accent" />
                     {site.contact.phone}
                   </a>
                 </li>
                 <li>
                   <a
                     href={site.contact.emailHref}
-                    className="text-ink underline-offset-4 hover:underline"
+                    className="inline-flex items-center gap-2 text-ink underline-offset-4 hover:underline"
                   >
+                    <Mail aria-hidden size={15} strokeWidth={1.5} className="text-accent" />
                     {site.contact.email}
                   </a>
                 </li>
@@ -100,9 +113,8 @@ export function PracticalInfo() {
               )}
             </div>
 
-            <div className="mt-3 flex flex-col gap-3 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
-              <span>{site.contact.locationLabel}</span>
-              <div className="flex items-center gap-4">
+            <div className="mt-3 flex min-h-11 items-center justify-between gap-4 text-xs text-muted">
+              <div className="min-w-0">
                 {mapActive && (
                   <button
                     type="button"
@@ -112,16 +124,16 @@ export function PracticalInfo() {
                     Disattiva mappa
                   </button>
                 )}
-                <a
-                  href={site.contact.mapExternalUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-ink underline-offset-4 hover:underline"
-                >
-                  Apri su Google Maps
-                  <ExternalLink aria-hidden size={13} />
-                </a>
               </div>
+              <a
+                href={site.contact.mapExternalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex shrink-0 items-center gap-1.5 text-ink underline-offset-4 hover:underline"
+              >
+                Apri su Google Maps
+                <ExternalLink aria-hidden size={13} />
+              </a>
             </div>
           </div>
         </div>

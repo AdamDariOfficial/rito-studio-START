@@ -1,6 +1,26 @@
 # RITO Studio START — Status
 
-**Updated:** 8 August 2026
+## Current reconciliation - 31 August 2026
+
+```text
+FINAL_START_FREEZE_AUTHORIZED_BY_USER
+FINAL_START_FREEZE_CANDIDATE_VALIDATED
+AUTOMATED_VALIDATION_CURRENT_PASS_PASSED
+TARGETED_BROWSER_QA_FINDINGS_REMEDIATED
+CODE_FIRST_RHYTHM_AUDIT_COMPLETE_NO_CHANGE_REQUIRED
+CANONICAL_FREEZE_IDENTITY_DEFINED_BY_FAMILY_START_V1_0_TAG_TARGET
+BUSINESS_CONSOLIDATION_AUTHORIZED_AFTER_VERIFIED_TAG
+BUSINESS_PLUS_NOT_IN_SCOPE
+```
+
+The final candidate was validated on `feat/rito-start-forno-functional-parity` while the
+pre-freeze parent HEAD remained `34c13cd78255b7ac009533790329cada74ae9d8a`. This file
+deliberately does not self-record the SHA of the commit that contains it. The canonical START
+freeze identity is the commit targeted by the verified local `family-start-v1.0` tag created
+at the manual Git checkpoint. This block records the durable freeze contract, not transient
+index or tag state. No package may stage, commit, tag, push, open a PR, merge or deploy.
+
+**Updated:** 31 August 2026
 **Project:** RITO Studio START
 **Repository:** `AdamDariOfficial/rito-studio-START`
 **Default branch:** `main`

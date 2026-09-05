@@ -1,7 +1,8 @@
 # RITO Studio — START → BUSINESS Inheritance Contract
 
 **Prepared:** 3 August 2026
-**Status:** `PREPARED_NOT_ACTIVE`
+**Updated:** 31 August 2026
+**Status:** `FINAL_FREEZE_ACTIVATION_CONTRACT`
 **Applies to:** future RITO Studio BUSINESS only
 
 ## Activation gate
@@ -104,3 +105,16 @@ The review must include responsive, accessibility, motion, route behavior,
 content integrity, security and production validation. Intentional BUSINESS
 differences must not be “fixed” back into START behavior merely for visual
 uniformity.
+
+## Reconciliation gate - 31 August 2026
+
+The earlier START freeze recorded in this repository is superseded for future lineage work by
+the final START candidate approved on 31 August 2026. The exact canonical SHA is deliberately
+not self-recorded in this pre-freeze commit: it is established by the subsequent manual Git
+checkpoint and the local `family-start-v1.0` tag.
+
+After that checkpoint, the existing `AdamDariOfficial/rito-studio-BUSINESS` repository must be
+reconciled against the new START freeze rather than recreated. Approved BUSINESS-specific
+decisions remain valid, including the direct-phone booking model and the query-driven treatment
+detail architecture. Shared footer, practical-information and accessibility improvements may be
+synchronized when they do not conflict with those decisions.

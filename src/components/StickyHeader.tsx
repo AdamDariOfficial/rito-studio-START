@@ -1,9 +1,12 @@
 import { useCallback, useEffect, useId, useRef, useState, type MouseEvent } from "react";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
+import { BookingAction } from "@/components/BookingAction";
 import { nav, site, ctaLabels } from "@/lib/site-config";
 import { prefersReducedMotion, scrollToSection, scrollToTop } from "@/lib/scroll-to-anchor";
 import { cn } from "@/lib/utils";
+
+const CONTACT_DIALOG_SELECTOR = '[data-rito-contact-dialog][data-state="open"]';
 
 const FOCUSABLE_SELECTOR = [
   "a[href]",
@@ -172,6 +175,9 @@ export function StickyHeader() {
     });
 
     const handleKeyDown = (event: KeyboardEvent) => {
+      const contactDialogOpen = document.querySelector<HTMLElement>(CONTACT_DIALOG_SELECTOR);
+      if (contactDialogOpen) return;
+
       if (event.key === "Escape") {
         event.preventDefault();
         closeDrawer();
@@ -205,7 +211,11 @@ export function StickyHeader() {
     };
 
     const handleFocusIn = (event: FocusEvent) => {
-      if (event.target instanceof Node && modal.contains(event.target)) return;
+      if (!(event.target instanceof Node)) return;
+
+      const contactDialogOpen = document.querySelector<HTMLElement>(CONTACT_DIALOG_SELECTOR);
+      if (modal.contains(event.target) || contactDialogOpen?.contains(event.target)) return;
+
       const firstDrawerControl = getFocusableElements(drawer)[0];
       (firstDrawerControl ?? triggerRef.current)?.focus({ preventScroll: true });
     };
@@ -244,6 +254,7 @@ export function StickyHeader() {
       if (!(target instanceof Node)) return;
       if (drawerRef.current?.contains(target)) return;
       if (triggerRef.current?.contains(target)) return;
+      if (target instanceof Element && target.closest("[data-rito-contact-layer]")) return;
       closeDrawer();
     };
 
@@ -344,13 +355,13 @@ export function StickyHeader() {
         </nav>
 
         <div inert={open} className="hidden lg:block">
-          <a
-            href={site.contact.phoneHref}
-            aria-label={`${ctaLabels.bookPrimary}: ${site.contact.phone}`}
+          <BookingAction
+            kind="booking"
+            ariaLabel={ctaLabels.bookPrimary}
             className="action-primary inline-flex min-h-11 items-center border border-ink bg-ink px-5 text-sm font-medium text-white hover:border-accent-strong hover:bg-accent-strong"
           >
             {ctaLabels.book}
-          </a>
+          </BookingAction>
         </div>
 
         <button
@@ -477,13 +488,13 @@ export function StickyHeader() {
                 </ul>
               </nav>
 
-              <a
-                href={site.contact.phoneHref}
-                aria-label={`${ctaLabels.bookPrimary}: ${site.contact.phone}`}
+              <BookingAction
+                kind="booking"
+                ariaLabel={ctaLabels.bookPrimary}
                 className="action-primary mt-5 inline-flex min-h-12 w-full items-center justify-center border border-ink bg-ink px-6 text-sm font-medium text-white hover:border-accent-strong hover:bg-accent-strong"
               >
                 {ctaLabels.book}
-              </a>
+              </BookingAction>
               <p className="mt-4 text-xs text-muted">{site.contact.locationLabel}</p>
             </div>
           </div>
