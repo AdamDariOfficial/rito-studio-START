@@ -3,6 +3,55 @@
 **Updated:** 5 September 2026
 **Status:** `FINAL_FREEZE_CLOSURE_AUTHORIZED / TAG_PENDING`
 **Repository:** `AdamDariOfficial/rito-studio-START`
+<!-- RITO_START_V101_CLOSURE:BEGIN -->
+## Current patch-release freeze authorization — 6 September 2026
+
+This section is the current authoritative gate state for the v1.0.1 patch release. Historical
+freeze sections below remain evidence of the earlier v1.0 closure.
+
+```text
+hero booking CTA patch:
+PR #15
+candidate: dd3e3668098817b6b24a300097a4a7df1096e000
+
+current application main:
+8d51a8f2b5e5589940034a872920808009fac6b9
+
+patch-release closure authorization:
+APPROVED_BY_PROJECT_OWNER
+
+automated evidence reported by project owner:
+git diff --check -> passed
+bun run lint     -> 0 errors, 6 inherited Fast Refresh warnings
+bun run build    -> passed, client + SSR + Nitro
+
+targeted browser QA after PR #15:
+APPROVED_BY_PROJECT_OWNER
+
+freeze state:
+PENDING_DOCUMENTATION_CLOSURE_AND_TAG_VERIFICATION
+
+historical annotated tag:
+family-start-v1.0 -> 74ee03c4d39a974872f94f53d14ec2873815ccf7
+
+target annotated tag:
+family-start-v1.0.1
+
+BUSINESS:
+UNCHANGED_BY_THIS_CLOSURE / FUTURE_RECONCILIATION_REQUIRES_SEPARATE_TASK
+
+BUSINESS PLUS:
+NOT AUTHORIZED_BY_THIS_CLOSURE
+```
+
+The patch-release freeze target is the future merge commit of this documentation closure, provided
+it descends from `8d51a8f2b5e5589940034a872920808009fac6b9` and contains only the reviewed documentation scope. The historical
+`family-start-v1.0` tag must not be moved or rewritten.
+
+The project owner explicitly confirmed the post-PR-15 targeted browser QA as satisfactory. No
+post-PR-15 production deployment or production-origin QA is recorded or claimed.
+<!-- RITO_START_V101_CLOSURE:END -->
+
 ## Current final freeze authorization — 5 September 2026
 
 This section is the current authoritative gate state. Historical sections below are retained as

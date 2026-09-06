@@ -460,3 +460,35 @@ registrato un nuovo deploy o production-origin QA successivo alla PR #13 e non d
 dichiarato come eseguito.
 
 **BUSINESS PLUS:** resta fuori scope e non viene autorizzato da questa decisione.
+<!-- RITO_START_V101_CLOSURE:BEGIN -->
+## BW-DEC-040 — Hero booking CTA emphasis e patch release START v1.0.1
+
+**Data:** 6 settembre 2026
+
+**Decisione:** la CTA primaria della Hero START usa la stessa affordance di prenotazione della CTA
+finale: icona `MessageCircle` seguita dal copy centralizzato `Prenota un appuntamento`.
+
+La modifica resta intenzionalmente circoscritta alla Hero. La CTA desktop della navbar e la CTA del
+drawer mobile mantengono il copy compatto `Prenota` e non ricevono l'icona in questo pass. Il
+booking adapter, i canali WhatsApp/telefono, il comportamento del dialog, le route e la gerarchia
+visuale restano invariati.
+
+**Evidenza Git:** candidate
+`dd3e3668098817b6b24a300097a4a7df1096e000`, PR #15, merge
+`8d51a8f2b5e5589940034a872920808009fac6b9`.
+
+**Evidenza automatica riportata dal proprietario:** `git diff --check` passato; lint con `0`
+errori e `6` warning Fast Refresh ereditati; build client/SSR/Nitro passata.
+
+**Freeze:** `family-start-v1.0` resta immutabile sul precedente freeze
+`74ee03c4d39a974872f94f53d14ec2873815ccf7`. Il nuovo target di patch release è `family-start-v1.0.1`, da creare solo
+dopo targeted browser QA registrato, merge della closure documentale e verifica locale/remota del
+tag.
+
+**Evidenza browser:** il proprietario del progetto ha confermato esplicitamente il targeted browser
+QA post-PR-15 come soddisfacente. Non è registrato un nuovo production-origin QA e non deve essere
+dichiarato come eseguito.
+
+**Esclusioni:** nessun backend, database, autenticazione, native booking, dipendenza, asset, route,
+deploy, modifica BUSINESS o apertura BUSINESS PLUS.
+<!-- RITO_START_V101_CLOSURE:END -->

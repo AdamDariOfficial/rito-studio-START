@@ -7,6 +7,45 @@
 **Application baseline before closure:** `523958b51e0d952c963380e6d384365b286953ca`
 **Canonical freeze identity:** the verified documentation-closure merge commit targeted by `family-start-v1.0`
 
+<!-- RITO_START_V101_CLOSURE:BEGIN -->
+## Patch release v1.0.1 addendum — 6 September 2026
+
+**Historical tag:** `family-start-v1.0` -> `74ee03c4d39a974872f94f53d14ec2873815ccf7`
+**Application baseline before patch closure:** `8d51a8f2b5e5589940034a872920808009fac6b9`
+**Target patch tag:** `family-start-v1.0.1`
+**Patch scope:** Hero booking CTA emphasis only
+**Patch PR:** `#15`
+**Patch candidate:** `dd3e3668098817b6b24a300097a4a7df1096e000`
+
+### Confirmed evidence
+
+- PR #15 is merged into `main`.
+- Remote PR scope contains exactly `src/components/sections/Hero.tsx`.
+- The project owner reported `git diff --check` passing before commit.
+- The project owner reported `bun run lint` with `0` errors and the six inherited Fast Refresh warnings.
+- The project owner reported `bun run build` passing client, SSR and Nitro generation.
+- Local `main` was synchronized to `8d51a8f2b5e5589940034a872920808009fac6b9` with a clean working tree.
+
+### Confirmed browser evidence
+
+- The project owner explicitly confirmed the post-PR-15 targeted browser QA as satisfactory.
+- This is owner-reported browser evidence, not production-origin attestation.
+
+### Evidence still required before the v1.0.1 tag
+
+- documentation-closure merge verification;
+- annotated `family-start-v1.0.1` tag creation;
+- local and remote tag-target verification.
+
+No new production deployment or production-origin QA is recorded or claimed.
+
+### Patch freeze rule
+
+`family-start-v1.0` remains immutable. The future `family-start-v1.0.1` tag must point to the
+documentation-closure merge commit descending from `8d51a8f2b5e5589940034a872920808009fac6b9`. No later commit should be created
+solely to echo that merge SHA.
+<!-- RITO_START_V101_CLOSURE:END -->
+
 ## Objective
 
 Freeze the final approved RITO Studio START candidate without inventing evidence and establish
