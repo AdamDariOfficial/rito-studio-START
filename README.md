@@ -34,6 +34,15 @@ prompts/LOVABLE_START_PROMPT.md
 
 ## Status
 
-The application baseline was merged through PR #5 and verified on the public production origin. RITO Studio START is a freeze candidate, but it is not yet approved, frozen or tagged.
+The final START application polish was merged through PR #13 on
+`main@523958b51e0d952c963380e6d384365b286953ca`, after the method/footer/FAQ polish merged
+through PR #12. The current application baseline passed the recorded automated checks and the
+project owner approved the final browser QA on 5 September 2026.
 
-BUSINESS and BUSINESS PLUS remain unauthorized. Backend, database, authentication and native booking remain outside the START baseline.
+RITO Studio START is explicitly approved for freeze. The canonical freeze becomes complete only
+when the final documentation-closure merge commit is identified by the verified annotated tag
+`family-start-v1.0`.
+
+RITO Studio BUSINESS reconciliation is authorized to begin after that tag is verified.
+BUSINESS PLUS remains outside scope. Backend, database, authentication and native booking remain
+outside the START baseline.

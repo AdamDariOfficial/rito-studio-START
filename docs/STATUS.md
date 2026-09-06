@@ -1,6 +1,47 @@
 # RITO Studio START — Status
+## Current reconciliation - 5 September 2026
 
-## Current reconciliation - 31 August 2026
+```text
+FINAL_INTERACTION_POLISH_MERGED_VIA_PR_13
+CURRENT_APPLICATION_MAIN_523958B
+AUTOMATED_VALIDATION_CURRENT_PASS_PASSED
+FINAL_BROWSER_QA_APPROVED_BY_PROJECT_OWNER
+FINAL_FREEZE_AUTHORIZED_BY_PROJECT_OWNER
+FINAL_FREEZE_CLOSURE_IN_PROGRESS
+CANONICAL_TAG_FAMILY_START_V1_0_PENDING
+BUSINESS_RECONCILIATION_AUTHORIZED_AFTER_VERIFIED_TAG
+BUSINESS_PLUS_NOT_IN_SCOPE
+```
+
+The current application baseline is
+`523958b51e0d952c963380e6d384365b286953ca`, produced after PR #12 and PR #13.
+
+The final browser QA was approved by the project owner after the last divider, footer, link and
+booking-CTA corrections.
+
+Confirmed final evidence:
+
+```text
+git diff --check -> passed
+bun run lint     -> 0 errors, 6 inherited Fast Refresh warnings
+bun run build    -> passed, client + SSR + Nitro
+browser QA       -> approved by project owner
+```
+
+The project owner explicitly authorized the final START freeze and progression to RITO Studio
+BUSINESS after the verified `family-start-v1.0` tag exists.
+
+The canonical frozen SHA is deliberately not self-recorded in this pre-merge document. It will be
+the documentation-closure merge commit targeted by the verified annotated tag.
+
+No production deploy or production-origin QA after PR #13 is recorded.
+
+**Current application main:** `523958b51e0d952c963380e6d384365b286953ca`
+**Tretnix Knowledge baseline:** `main@319393c5a241b359fa2fee3a9adf55f9af8dc3ad`
+**Shared decisions:** `TRX-DEC-038`, `TRX-DEC-039`
+**Family kit:** Beauty & Wellness `v1.1`
+
+## Historical reconciliation - 31 August 2026
 
 ```text
 FINAL_START_FREEZE_AUTHORIZED_BY_USER

@@ -1,8 +1,62 @@
 # RITO Studio START — Approval and Freeze Record
 
-**Updated:** 8 August 2026
-**Status:** `POST_FREEZE_REFINEMENT_MERGED / CURRENT_MAIN_NOT_REFROZEN`
+**Updated:** 5 September 2026
+**Status:** `FINAL_FREEZE_CLOSURE_AUTHORIZED / TAG_PENDING`
 **Repository:** `AdamDariOfficial/rito-studio-START`
+## Current final freeze authorization — 5 September 2026
+
+This section is the current authoritative gate state. Historical sections below are retained as
+evidence of earlier phases.
+
+```text
+method/footer/FAQ polish:
+PR #12
+candidate: d235346ae19e9aa33f7306070a439a13a7a4507b
+
+final interaction polish:
+PR #13
+candidate: 2774df1054b149d9c88f02f8301cfd7883d2d200
+
+current application main:
+523958b51e0d952c963380e6d384365b286953ca
+
+approval:
+APPROVED_BY_PROJECT_OWNER
+
+freeze authorization:
+APPROVED_BY_PROJECT_OWNER
+
+freeze state:
+PENDING_DOCUMENTATION_CLOSURE_AND_TAG_VERIFICATION
+
+annotated tag:
+family-start-v1.0
+
+BUSINESS reconciliation:
+AUTHORIZED_AFTER_VERIFIED_TAG
+
+BUSINESS PLUS:
+NOT AUTHORIZED
+```
+
+Recorded final validation:
+
+```text
+git diff --check -> passed
+bun run lint     -> 0 errors, 6 inherited Fast Refresh warnings
+bun run build    -> passed, client + SSR + Nitro
+browser QA       -> approved by project owner
+```
+
+The final application cycle includes the approved independent opacity-only divider behavior,
+the non-breaking `Privacy` + `Cookie` legal pair, persistent link affordance, final light CTA
+motion and separate mobile CTA reveals.
+
+No post-PR-13 production deployment or production-origin QA is recorded and none is claimed.
+
+The final freeze target is the merge commit of this documentation closure, provided it descends
+from `523958b51e0d952c963380e6d384365b286953ca`. The verified annotated
+`family-start-v1.0` tag will be the authoritative frozen identity.
 
 ## Purpose
 
@@ -10,7 +64,7 @@ This document prepares the evidence model and remaining explicit gates for the
 final approval and freeze of RITO Studio START. Its presence does not itself
 approve, freeze or tag the project.
 
-## Current application baseline
+## Historical application baseline
 
 ```text
 PR: #5
@@ -28,7 +82,7 @@ The authoritative freeze identity must therefore be established after merge by
 an annotated tag pointing to the verified documentation-closure merge commit,
 together with GitHub commit and tag metadata.
 
-## Completed local gates before push
+## Historical completed local gates before push
 
 - [x] START-only scope preserved.
 - [x] Controlled pre-freeze implementation applied and validated.
@@ -55,7 +109,7 @@ together with GitHub commit and tag metadata.
 - [x] Post-commit status correction applied and validated.
 - [x] Local documentation commit amended without changing its subject or scope.
 
-## Remaining controlled gates
+## Historical remaining controlled gates
 
 - [ ] Authorize and perform the branch push.
 - [ ] Authorize and open the documentation PR.
@@ -79,7 +133,7 @@ together with GitHub commit and tag metadata.
 - Six inherited Fast Refresh warnings remain; lint has zero errors.
 - No separate screen-reader speech-output recording exists.
 
-## Final approval evidence
+## Historical final approval evidence
 
 The final approval, freeze target SHA and tag are to be recorded in the
 annotated tag message and verified through GitHub metadata after the

@@ -1,8 +1,8 @@
 # RITO Studio — Decision Log
 
 **Famiglia:** Beauty & Wellness
-**Versione:** 1.3
-**Stato:** decisioni approvate e aggiornate al 31 agosto 2026
+**Versione:** 1.4
+**Stato:** decisioni approvate e aggiornate al 5 settembre 2026
 
 ## BW-DEC-001 — Concept portfolio
 
@@ -425,3 +425,38 @@ L'approvazione di freeze dell'utente accetta questo limite noto; non trasforma u
 non eseguito in un PASS.
 
 **BUSINESS PLUS:** non viene aperto o modificato da questa decisione.
+
+## BW-DEC-039 — Refreeze finale dopo interaction polish e handoff BUSINESS
+
+**Data:** 5 settembre 2026
+
+**Decisione:** i refinement approvati e uniti tramite PR #12 e PR #13 sostituiscono il
+candidate applicativo precedente come sorgente da portare al refreeze finale START.
+
+La baseline applicativa pre-closure è:
+
+```text
+523958b51e0d952c963380e6d384365b286953ca
+```
+
+Il ciclo finale incorpora inoltre gli standard condivisi Tretnix già canonici:
+
+- `TRX-DEC-038` per divider editoriali con reveal autonomo opacity-only e layout invariato;
+- `TRX-DEC-039` per `Privacy` + `Cookie` come coppia legale non separabile.
+
+L'utente ha approvato il browser QA finale, ha autorizzato esplicitamente il freeze START e ha
+autorizzato la prosecuzione su RITO Studio BUSINESS dopo la verifica del tag frozen.
+
+**Identità del freeze:** `523958b...` è la baseline applicativa da chiudere, non il target frozen
+autorevole. Il freeze canonico è il merge commit della closure documentale finale discendente da
+`523958b...`, identificato dal tag annotato `family-start-v1.0` e verificato localmente e sul
+remoto.
+
+**BUSINESS:** dopo la verifica del tag, riconciliare il repository BUSINESS esistente contro la
+nuova baseline frozen senza ricrearlo e senza cancellare differenze BUSINESS intenzionali.
+
+**Limite di evidenza:** lint, build, diff check e browser QA finale sono registrati. Non è
+registrato un nuovo deploy o production-origin QA successivo alla PR #13 e non deve essere
+dichiarato come eseguito.
+
+**BUSINESS PLUS:** resta fuori scope e non viene autorizzato da questa decisione.
