@@ -1,9 +1,9 @@
 # RITO Studio — START → BUSINESS Inheritance Contract
 
 **Prepared:** 3 August 2026
-**Updated:** 31 August 2026
-**Status:** `FINAL_FREEZE_ACTIVATION_CONTRACT`
-**Applies to:** future RITO Studio BUSINESS only
+**Updated:** 5 September 2026
+**Status:** `BUSINESS_RECONCILIATION_AUTHORIZED_PENDING_VERIFIED_TAG`
+**Applies to:** existing RITO Studio BUSINESS reconciliation and future lineage
 
 ## Activation gate
 
@@ -118,3 +118,29 @@ reconciled against the new START freeze rather than recreated. Approved BUSINESS
 decisions remain valid, including the direct-phone booking model and the query-driven treatment
 detail architecture. Shared footer, practical-information and accessibility improvements may be
 synchronized when they do not conflict with those decisions.
+
+## Final authorization state - 5 September 2026
+
+The project owner has explicitly:
+
+- approved the current RITO Studio START for final freeze;
+- authorized the final freeze procedure;
+- authorized progression to RITO Studio BUSINESS after the frozen tag is verified.
+
+The implementation baseline before documentation closure is:
+
+```text
+RITO Studio START main:
+523958b51e0d952c963380e6d384365b286953ca
+```
+
+Activation items 2 and 6 above are satisfied. Items 1, 3, 4 and 5 remain procedural gates until
+the documentation closure is merged and the annotated `family-start-v1.0` tag is created, pushed
+and verified locally/remotely.
+
+After tag verification, use the existing `AdamDariOfficial/rito-studio-BUSINESS` repository as
+the operational base and reconcile it against the new frozen START instead of recreating BUSINESS.
+
+Preserve intentional BUSINESS-specific behavior unless a separate approved decision changes it.
+
+BUSINESS PLUS remains excluded.
