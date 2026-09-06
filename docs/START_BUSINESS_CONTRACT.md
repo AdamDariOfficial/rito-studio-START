@@ -5,6 +5,34 @@
 **Status:** `BUSINESS_RECONCILIATION_AUTHORIZED_PENDING_VERIFIED_TAG`
 **Applies to:** existing RITO Studio BUSINESS reconciliation and future lineage
 
+<!-- RITO_START_V101_CLOSURE:BEGIN -->
+## Patch-release lineage update — 6 September 2026
+
+The historical START freeze remains:
+
+```text
+family-start-v1.0 -> 74ee03c4d39a974872f94f53d14ec2873815ccf7
+```
+
+PR #15 advanced the START application baseline to:
+
+```text
+8d51a8f2b5e5589940034a872920808009fac6b9
+```
+
+After the v1.0.1 documentation closure is merged and the annotated `family-start-v1.0.1` tag is
+verified locally and remotely, that tag becomes the canonical START source for future
+shared-lineage reconciliation work.
+
+This closure does **not** modify RITO Studio BUSINESS or BUSINESS PLUS. Existing BUSINESS-specific
+differences remain intentional. Any synchronization from v1.0.1 into BUSINESS requires a separate
+approved task, diff review and validation; no repository is recreated and historical lineage is not
+rewritten retroactively.
+
+Until `family-start-v1.0.1` is verified, the existing historical freeze evidence remains valid and
+the patch-release source is not declared frozen.
+<!-- RITO_START_V101_CLOSURE:END -->
+
 ## Activation gate
 
 This contract becomes active only after all of the following exist:

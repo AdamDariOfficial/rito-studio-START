@@ -1,4 +1,39 @@
 # RITO Studio START — Status
+<!-- RITO_START_V101_CLOSURE:BEGIN -->
+## Current patch-release reconciliation — 6 September 2026
+
+```text
+HISTORICAL_FREEZE_FAMILY_START_V1_0_PRESERVED
+HISTORICAL_FREEZE_SHA_74EE03C4D39A974872F94F53D14EC2873815CCF7
+PR_15_HERO_BOOKING_CTA_PATCH_MERGED
+CURRENT_APPLICATION_MAIN_8D51A8F2B5E5589940034A872920808009FAC6B9
+LOCAL_DIFF_CHECK_REPORTED_PASSED
+LOCAL_LINT_REPORTED_0_ERRORS_6_INHERITED_WARNINGS
+LOCAL_BUILD_REPORTED_PASSED
+TARGETED_BROWSER_QA_APPROVED_BY_PROJECT_OWNER
+PATCH_RELEASE_FREEZE_CLOSURE_AUTHORIZED
+TARGET_TAG_FAMILY_START_V1_0_1_PENDING
+BUSINESS_UNCHANGED_BY_THIS_CLOSURE
+BUSINESS_PLUS_NOT_AUTHORIZED_BY_THIS_CLOSURE
+```
+
+PR #15 merged candidate `dd3e3668098817b6b24a300097a4a7df1096e000` into
+`main@8d51a8f2b5e5589940034a872920808009fac6b9`. The remote PR scope contains exactly one application file:
+`src/components/sections/Hero.tsx`.
+
+The patch adds `MessageCircle`, `gap-2` and the icon before the existing
+`Prenota un appuntamento` label in the Hero booking CTA. It does not change booking behavior,
+header/drawer CTA copy, dependencies, routes, backend scope or infrastructure.
+
+The previous canonical tag `family-start-v1.0` remains an immutable historical baseline at
+`74ee03c4d39a974872f94f53d14ec2873815ccf7`. The next patch-release freeze is intended to be `family-start-v1.0.1`,
+identified by the future documentation-closure merge commit after documentation closure and
+local/remote tag verification.
+
+The project owner explicitly confirmed the post-PR-15 targeted browser QA as satisfactory. No
+post-PR-15 production-origin QA is recorded.
+<!-- RITO_START_V101_CLOSURE:END -->
+
 ## Current reconciliation - 5 September 2026
 
 ```text
