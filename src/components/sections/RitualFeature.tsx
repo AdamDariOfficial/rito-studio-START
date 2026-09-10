@@ -56,7 +56,7 @@ export function RitualFeature() {
               {methodSteps.map((step, index) => (
                 <li
                   key={step.index}
-                  className="relative grid grid-cols-[3.5rem_minmax(0,1fr)] items-center gap-x-4 gap-y-3 border-b border-transparent py-7 md:grid-cols-[3.25rem_minmax(0,10rem)_minmax(0,1fr)] md:gap-x-5 md:py-10"
+                  className="relative grid grid-cols-[3.5rem_minmax(0,1fr)] items-center gap-x-4 gap-y-3 border-b border-transparent py-7 md:py-10 lg:grid-cols-[3.25rem_minmax(0,10rem)_minmax(0,1fr)] lg:gap-x-5"
                   style={{ ["--reveal-delay" as string]: `${180 + index * 30}ms` }}
                 >
                   <span className="font-display text-2xl leading-none text-accent" data-reveal>
@@ -69,7 +69,7 @@ export function RitualFeature() {
                     {step.title}
                   </h3>
                   <p
-                    className="col-start-2 max-w-md text-sm leading-relaxed text-muted md:col-start-auto md:text-base"
+                    className="col-start-2 max-w-md text-sm leading-relaxed text-muted md:text-base lg:col-start-auto"
                     data-reveal
                   >
                     {step.body}

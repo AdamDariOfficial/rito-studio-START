@@ -539,7 +539,9 @@ Questa è una demo Tretnix. Nessun dato è stato inviato.
 - Usare `.example` per email e dominio.
 - Non usare indirizzi reali.
 - Non integrare mappe verso luoghi reali.
-- Non mostrare recensioni inventate.
+- Le recensioni sintetiche sono ammesse soltanto come fixture demo secondo `TRX-DEC-040`, con
+  wording neutro, nessuna falsa attribuzione o falso URL e sostituzione/disabilitazione per un
+  cliente reale.
 - Non mostrare contatori clienti.
 - Non mostrare certificazioni non possedute.
 - Segnalare nel footer che il concept è dimostrativo.
@@ -659,7 +661,8 @@ Restano obbligatori:
 - `noindex, follow`;
 - nessun backend o invio dati;
 - nessun dato strutturato commerciale;
-- nessuna recensione, metrica, certificazione o attività reale inventata.
+- nessuna recensione sintetica presentata come autentica e nessuna metrica, certificazione o
+  attività reale inventata; le fixture demo seguono `TRX-DEC-040`.
 
 ### Gallery mobile
 

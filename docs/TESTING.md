@@ -83,6 +83,14 @@ Non inventarlo.
 - lazy loading;
 - nessun salto di layout.
 
+### Recensioni demo
+
+- visibili di default;
+- nessun gating development o query di preview;
+- wording neutro e indicazione dimostrativa;
+- nessuna attribuzione Google o falso URL;
+- nessun `review`, `rating` o `aggregateRating` nel JSON-LD.
+
 ### CTA e contatti
 
 - modalità demo non invia dati;
@@ -246,7 +254,7 @@ Verificare:
 - status code;
 - URL leggibili;
 - structured data appropriati;
-- nessun rating inventato;
+- nessun rating sintetico nei dati strutturati e nessuna fixture demo presentata come autentica;
 - dati demo non confondibili con attività reale.
 
 ## 10. Performance

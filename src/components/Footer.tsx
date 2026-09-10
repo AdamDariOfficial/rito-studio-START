@@ -1,8 +1,7 @@
-import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import { type MouseEvent } from "react";
+import { BrandHomeLink } from "@/components/BrandHomeLink";
 import { RevealDivider } from "@/components/RevealDivider";
-import { scrollToTop } from "@/lib/scroll-to-anchor";
 import { site } from "@/lib/site-config";
 
 const footerLinkClass =
@@ -10,33 +9,16 @@ const footerLinkClass =
 
 export function Footer() {
   const year = new Date().getFullYear();
-  const pathname = useRouterState({ select: (state) => state.location.pathname });
-  const navigate = useNavigate();
-
-  function handleBrandClick(event: MouseEvent<HTMLAnchorElement>) {
-    if (pathname !== "/") return;
-
-    event.preventDefault();
-    void navigate({
-      to: "/",
-      replace: true,
-      resetScroll: false,
-    }).then(() => scrollToTop());
-  }
-
   return (
     <footer className="border-t border-ink bg-ink text-white">
       <div className="container-editorial grid gap-10 py-14 md:grid-cols-[1.4fr_1fr] md:py-16">
         <div>
-          <Link
-            to="/"
-            resetScroll={pathname !== "/"}
-            onClick={handleBrandClick}
+          <BrandHomeLink
             className="inline-flex font-display text-2xl text-white transition-colors hover:text-surface focus-visible:outline-white"
-            aria-label={`${site.brand.name} — home`}
+            ariaLabel={`${site.brand.name} — home`}
           >
             {site.brand.name}
-          </Link>
+          </BrandHomeLink>
           <p className="mt-1 text-sm text-surface">{site.brand.descriptor}</p>
           <p className="mt-6 max-w-xs text-xs leading-relaxed text-surface">
             Capelli, pelle e benessere in un ambiente essenziale, su appuntamento.
