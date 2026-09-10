@@ -1,22 +1,16 @@
-import { useEffect, useState } from "react";
 import { ExternalLink, Quote, Star } from "lucide-react";
 import { RevealDivider } from "@/components/RevealDivider";
-import { googleReviewsPreview, site } from "@/lib/site-config";
+import { site, type ReviewsConfig } from "@/lib/site-config";
 
-export function ReviewsSection() {
-  const [previewEnabled, setPreviewEnabled] = useState(false);
-
-  useEffect(() => {
-    if (!import.meta.env.DEV) return;
-    setPreviewEnabled(new URLSearchParams(window.location.search).get("reviewsPreview") === "1");
-  }, []);
-
-  const config = previewEnabled ? googleReviewsPreview : site.googleReviews;
+export function ReviewsSection({ config = site.reviews }: { config?: ReviewsConfig } = {}) {
   const reviews = config.reviews.slice(0, 3);
 
   if (!config.enabled || reviews.length === 0) return null;
 
-  const roundedAverage = Math.round(config.averageRating);
+  const authenticConfig = config.mode === "authentic" ? config : null;
+  const averageRating = authenticConfig?.averageRating ?? 0;
+  const reviewCount = authenticConfig?.reviewCount ?? 0;
+  const roundedAverage = Math.round(averageRating);
 
   return (
     <section
@@ -28,7 +22,9 @@ export function ReviewsSection() {
       <div className="container-editorial">
         <div className="grid gap-8 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7" data-reveal>
-            <p className="eyebrow">Recensioni Google</p>
+            <p className="eyebrow">
+              {authenticConfig?.platform ? `Recensioni ${authenticConfig.platform}` : "Recensioni"}
+            </p>
             <h2
               id="recensioni-heading"
               className="mt-5 font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[1.02] text-ink"
@@ -40,17 +36,17 @@ export function ReviewsSection() {
           <div className="md:col-span-5 md:justify-self-end">
             <div className="relative border-l border-transparent pl-5">
               <RevealDivider className="inset-y-0 -left-px w-px bg-line" />
-              {config.averageRating > 0 && (
+              {averageRating > 0 && (
                 <div className="flex items-center gap-3" data-reveal>
                   <span className="font-display text-3xl text-ink">
-                    {config.averageRating.toLocaleString("it-IT", {
+                    {averageRating.toLocaleString("it-IT", {
                       minimumFractionDigits: 1,
                       maximumFractionDigits: 1,
                     })}
                   </span>
                   <span
                     className="flex items-center gap-0.5 text-accent"
-                    aria-label={`${config.averageRating.toLocaleString("it-IT")} stelle su 5`}
+                    aria-label={`${averageRating.toLocaleString("it-IT")} stelle su 5`}
                   >
                     {Array.from({ length: 5 }, (_, index) => (
                       <Star
@@ -63,9 +59,9 @@ export function ReviewsSection() {
                   </span>
                 </div>
               )}
-              {config.reviewCount > 0 && (
+              {reviewCount > 0 && (
                 <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted" data-reveal>
-                  {config.reviewCount.toLocaleString("it-IT")} recensioni
+                  {reviewCount.toLocaleString("it-IT")} recensioni
                 </p>
               )}
             </div>
@@ -119,15 +115,16 @@ export function ReviewsSection() {
                   className="mt-1 flex flex-wrap items-center justify-between gap-3 text-xs text-muted"
                   data-reveal
                 >
-                  <span>{review.dateLabel ?? "Google"}</span>
-                  {review.reviewUrl && (
+                  <span>{review.dateLabel}</span>
+                  {config.mode === "authentic" && "reviewUrl" in review && review.reviewUrl && (
                     <a
                       href={review.reviewUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex min-h-11 items-center gap-1.5 px-1 text-ink underline-offset-4 hover:underline"
+                      aria-label={`Apri la recensione di ${review.author}${config.platform ? ` su ${config.platform}` : " alla fonte"}`}
                     >
-                      Google
+                      {config.platform ?? "Fonte"}
                       <ExternalLink aria-hidden size={13} />
                     </a>
                   )}
@@ -137,15 +134,16 @@ export function ReviewsSection() {
           ))}
         </div>
 
-        {config.profileUrl && (
+        {authenticConfig?.profileUrl && (
           <div className="mt-10" data-reveal>
             <a
-              href={config.profileUrl}
+              href={authenticConfig.profileUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="editorial-link min-h-11 text-sm font-medium"
             >
-              Vedi tutte le recensioni su Google
+              Vedi tutte le recensioni
+              {authenticConfig.platform ? ` su ${authenticConfig.platform}` : ""}
               <ExternalLink aria-hidden size={15} />
             </a>
           </div>

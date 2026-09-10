@@ -16,21 +16,42 @@ export type ContactChannel = {
   external?: boolean;
 };
 
-export type GoogleReview = {
+type ReviewBase = {
   author: string;
   rating: 1 | 2 | 3 | 4 | 5;
   text: string;
   dateLabel?: string;
+};
+
+export type DemoReview = ReviewBase & {
+  reviewUrl?: never;
+};
+
+export type AuthenticReview = ReviewBase & {
   reviewUrl?: string;
 };
 
-export type GoogleReviewsConfig = {
+export type DemoReviewsConfig = {
   enabled: boolean;
-  averageRating: number;
-  reviewCount: number;
-  profileUrl: string;
-  reviews: readonly GoogleReview[];
+  mode: "demo";
+  platform?: never;
+  profileUrl?: never;
+  averageRating?: never;
+  reviewCount?: never;
+  reviews: readonly DemoReview[];
 };
+
+export type AuthenticReviewsConfig = {
+  enabled: boolean;
+  mode: "authentic";
+  platform?: string;
+  profileUrl?: string;
+  averageRating?: number;
+  reviewCount?: number;
+  reviews: readonly AuthenticReview[];
+};
+
+export type ReviewsConfig = DemoReviewsConfig | AuthenticReviewsConfig;
 
 const siteUrl = "https://rito-studio.tretnix.com";
 const phone = "+39 049 000 0000";
@@ -123,13 +144,30 @@ export const site = {
     { label: "Dove", value: "Padova centro" },
     { label: "Orari", value: "Mar–Sab" },
   ],
-  googleReviews: {
-    enabled: false,
-    averageRating: 0,
-    reviewCount: 0,
-    profileUrl: "",
-    reviews: [],
-  } satisfies GoogleReviewsConfig,
+  reviews: {
+    enabled: true,
+    mode: "demo",
+    reviews: [
+      {
+        author: "E.C.",
+        rating: 5,
+        text: "Un ambiente raccolto e preciso, con il tempo giusto per ascoltare e scegliere il trattamento con calma.",
+        dateLabel: "Contenuto dimostrativo",
+      },
+      {
+        author: "L.M.",
+        rating: 5,
+        text: "Gesti curati, spiegazioni chiare e un'atmosfera essenziale. Ogni passaggio sembra avere il suo ritmo.",
+        dateLabel: "Contenuto dimostrativo",
+      },
+      {
+        author: "S.R.",
+        rating: 4,
+        text: "Una proposta contemporanea e tranquilla, costruita intorno alle esigenze della persona senza fretta.",
+        dateLabel: "Contenuto dimostrativo",
+      },
+    ],
+  } satisfies ReviewsConfig,
   legal: {
     lastUpdated: "2 agosto 2026",
   },
@@ -144,36 +182,6 @@ export const site = {
   },
 } as const;
 
-export const googleReviewsPreview: GoogleReviewsConfig = {
-  enabled: true,
-  averageRating: 4.9,
-  reviewCount: 128,
-  profileUrl: "https://www.google.com/maps",
-  reviews: [
-    {
-      author: "Anteprima 01",
-      rating: 5,
-      text: "Recensione dimostrativa usata soltanto per verificare gerarchia, lunghezza e comportamento responsive della sezione.",
-      dateLabel: "fixture development",
-      reviewUrl: "https://www.google.com/maps",
-    },
-    {
-      author: "Anteprima 02",
-      rating: 5,
-      text: "Testo sintetico di sviluppo per controllare tipografia editoriale, allineamenti e spaziatura senza pubblicare testimonianze inventate.",
-      dateLabel: "fixture development",
-      reviewUrl: "https://www.google.com/maps",
-    },
-    {
-      author: "Anteprima 03",
-      rating: 5,
-      text: "Fixture non pubblica per validare una terza recensione e la resa della griglia ai breakpoint tablet e desktop.",
-      dateLabel: "fixture development",
-      reviewUrl: "https://www.google.com/maps",
-    },
-  ],
-};
-
 export function canonicalUrl(pathname: string) {
   return new URL(pathname, site.seo.siteUrl).toString();
 }
@@ -184,7 +192,7 @@ export const nav = [
   { label: "Studio", hash: "#studio" },
   { label: "Galleria", hash: "#galleria" },
   { label: "FAQ", hash: "#faq" },
-  ...(site.googleReviews.enabled ? [{ label: "Recensioni", hash: "#recensioni" }] : []),
+  ...(site.reviews.enabled ? [{ label: "Recensioni", hash: "#recensioni" }] : []),
   { label: "Contatti", hash: "#contatti" },
 ] as const;
 

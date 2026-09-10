@@ -46,7 +46,9 @@
 
 ## BW-DEC-009 — Nessun contenuto inventato
 
-**Decisione:** vietare recensioni, metriche, certificazioni, risultati e attività reali inventate.
+**Decisione:** vietare recensioni presentate come autentiche, metriche, certificazioni, risultati
+e attività reali inventate. Le fixture recensione sintetiche sono ammesse nella portfolio demo
+soltanto secondo `TRX-DEC-040`, senza falsa attribuzione, falsi URL o structured data commerciali.
 
 ## BW-DEC-010 — Demo senza invio dati
 
@@ -344,8 +346,14 @@ l'adapter presenta una scelta accessibile senza cambiare i componenti consumer. 
 vuoto finché non vengono forniti dati autentici. Le fixture development sono esplicitamente
 marcate come anteprime tecniche e non devono essere pubblicate come testimonianze reali.
 
+**Aggiornamento 9 settembre 2026:** `TRX-DEC-040` sostituisce questo gating operativo. La review
+surface usa ora fixture sintetiche pubbliche typed in modalità `demo`, wording neutro, nessuna
+attribuzione o URL Google e nessun review/rating structured data. La storia del pass precedente
+resta registrata qui come evidenza della baseline. Nel portfolio demo corrente `ReviewsSection` è
+abilitata e visibile di default, senza flag development o query di preview.
+
 **Ordine home risultante:** `StickyHeader`, `Hero`, `TrustBand`, `EditorialServiceList`,
-`RitualFeature`, `StudioEditorial`, `GalleryRail`, `FaqSection`, `ReviewsSection` opzionale,
+`RitualFeature`, `StudioEditorial`, `GalleryRail`, `FaqSection`, `ReviewsSection`,
 `BookingCTA`, `PracticalInfo`, `Footer`.
 
 **Esclusioni:** nessun backend, form, database, booking nativo, disponibilità live, pagamento,
@@ -383,6 +391,10 @@ Sono approvati nello stesso pass controllato:
 del concept corrente e sostituisce BW-DEC-036 nei punti relativi a `BookingAction` e
 `TrustBand`. Restano validi RouteFocus, recensioni opzionali real-only, fixture development,
 metadata social e JSON-LD neutro introdotti da BW-DEC-036.
+
+**Aggiornamento 9 settembre 2026:** per le recensioni, `TRX-DEC-040` sostituisce il vincolo
+`real-only` e la limitazione development. Restano invariati il layout RITO approvato e il divieto
+di falsa attribuzione, falsi URL e structured data commerciali.
 
 **Footer:** RITO adotta il pattern legale compatto condiviso: copyright, `Privacy` e `Cookie`
 nella fascia utility inferiore insieme all’attribuzione Tretnix, senza una colonna `Info` o

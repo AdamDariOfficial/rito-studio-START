@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useId, useRef, useState, type MouseEvent } from "react";
-import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
+import { useNavigate, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { BookingAction } from "@/components/BookingAction";
+import { BrandHomeLink } from "@/components/BrandHomeLink";
 import { nav, site, ctaLabels } from "@/lib/site-config";
-import { prefersReducedMotion, scrollToSection, scrollToTop } from "@/lib/scroll-to-anchor";
+import { prefersReducedMotion, scrollToSection } from "@/lib/scroll-to-anchor";
 import { cn } from "@/lib/utils";
 
 const CONTACT_DIALOG_SELECTOR = '[data-rito-contact-dialog][data-state="open"]';
@@ -283,18 +284,9 @@ export function StickyHeader() {
     }).then(() => scrollToSection(id));
   }
 
-  function handleLogoClick(event: MouseEvent<HTMLAnchorElement>) {
-    if (!isHome) return;
-
-    event.preventDefault();
+  function handleBrandActivate() {
     setActive(null);
     if (open) closeDrawer();
-
-    void navigate({
-      to: "/",
-      replace: true,
-      resetScroll: false,
-    }).then(() => scrollToTop());
   }
 
   return (
@@ -310,16 +302,14 @@ export function StickyHeader() {
       style={{ height: "var(--header-height)" }}
     >
       <div className="container-editorial flex h-full items-center justify-between gap-6">
-        <Link
-          to="/"
-          resetScroll={!isHome}
+        <BrandHomeLink
           inert={open}
-          onClick={handleLogoClick}
+          onActivate={handleBrandActivate}
           className="font-display text-lg leading-none tracking-tight text-ink"
-          aria-label={`${site.brand.name} — home`}
+          ariaLabel={`${site.brand.name} — home`}
         >
           {site.brand.name}
-        </Link>
+        </BrandHomeLink>
 
         <nav
           inert={open}

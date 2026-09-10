@@ -90,7 +90,9 @@ A prepared prompt for a future plan is not authorization to execute it.
 - Use meaningful alt text; decorative imagery uses empty alt.
 - Every public route uses `noindex, follow`.
 - Do not publish fictional commercial structured data.
-- Do not invent reviews, ratings, awards, credentials, guarantees or medical claims.
+- Synthetic reviews are allowed only as explicitly typed demo fixtures under `TRX-DEC-040`, with
+  neutral wording, no real-person or platform attribution, no fake URLs and no commercial review
+  structured data. Do not invent awards, credentials, guarantees, metrics or medical claims.
 - Demo actions must never pretend that a real reservation or submission occurred.
 
 ## Tretnix attribution
